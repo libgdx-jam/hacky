@@ -16,12 +16,15 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.Contact;
+import com.badlogic.gdx.physics.box2d.ContactImpulse;
+import com.badlogic.gdx.physics.box2d.ContactListener;
+import com.badlogic.gdx.physics.box2d.Fixture;
+import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
 import co.porkopolis.hacky.EntityManager;
-import co.porkopolis.hacky.entities.Bomb;
-import co.porkopolis.hacky.entities.Coin;
 import co.porkopolis.hacky.entities.Player;
 import co.porkopolis.hacky.untils.EntityBuilder;
 import co.porkopolis.hacky.untils.MapBodyBuilder;
@@ -54,6 +57,8 @@ public class GameScreen implements Screen {
 		camera.setToOrtho(false, width, height);
 		camera.translate(-11.5f, -12.5f);
 		camera.update();
+		
+		createCollisionListener();
 
 		renderer = new Box2DDebugRenderer();
 		renderer.setDrawBodies(true);
@@ -91,10 +96,12 @@ public class GameScreen implements Screen {
 				+ mapWidth / 2;
 		gravity.y = MathUtils.sin(angle) * (dist - mapWidth / 2) + MathUtils.cos(angle) * (dist - mapHeight / 2)
 				+ mapHeight / 2;
-		
+
 		world.setGravity(gravity);
 
-		//camera.rotate((((MathUtils.atan2(gravity.y - mapHeight / 2, gravity.x - mapWidth / 3)- MathUtils.atan2(camera.up.x, camera.up.y))) + MathUtils.PI * 0.45f) * MathUtils.radiansToDegrees);
+		// camera.rotate((((MathUtils.atan2(gravity.y - mapHeight / 2, gravity.x
+		// - mapWidth / 3)- MathUtils.atan2(camera.up.x, camera.up.y))) +
+		// MathUtils.PI * 0.45f) * MathUtils.radiansToDegrees);
 
 		world.step(1 / 60f, 6, 2);
 		tiledMapRenderer.setView(camera);
@@ -109,6 +116,34 @@ public class GameScreen implements Screen {
 		shapeRenderer.circle(gravity.x, gravity.y, 0.5f);
 		shapeRenderer.end();
 
+	}
+
+	private void createCollisionListener() {
+		world.setContactListener(new ContactListener() {
+
+			@Override
+			public void beginContact(Contact contact) {
+				Fixture fixtureA = contact.getFixtureA();
+				Fixture fixtureB = contact.getFixtureB();
+				Gdx.app.log("beginContact", "between " + fixtureA.toString() + " and " + fixtureB.toString());
+			}
+
+			@Override
+			public void endContact(Contact contact) {
+				Fixture fixtureA = contact.getFixtureA();
+				Fixture fixtureB = contact.getFixtureB();
+				Gdx.app.log("endContact", "between " + fixtureA.toString() + " and " + fixtureB.toString());
+			}
+
+			@Override
+			public void preSolve(Contact contact, Manifold oldManifold) {
+			}
+
+			@Override
+			public void postSolve(Contact contact, ContactImpulse impulse) {
+			}
+
+		});
 	}
 
 	@Override

@@ -27,7 +27,7 @@ public class Bomb implements Entity {
 		body = world.createBody(def);
 
 		CircleShape cir = new CircleShape();
-		cir.setRadius(0.4f);
+		cir.setRadius(0.48f);
 
 		FixtureDef fDef = new FixtureDef();
 		fDef.shape = cir;
@@ -49,6 +49,24 @@ public class Bomb implements Entity {
 	public Body getBody() {
 		// TODO Auto-generated method stub
 		return body;
+	}
+
+	@Override
+	public void touch() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void touched() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void endTouch() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

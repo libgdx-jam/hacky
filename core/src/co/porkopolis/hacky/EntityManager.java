@@ -1,5 +1,6 @@
 package co.porkopolis.hacky;
 
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 
 import co.porkopolis.hacky.entities.Entity;
@@ -20,6 +21,9 @@ public class EntityManager {
 				e.getBody().setAwake(true);
 			}
 		}
+	}
+	public static Entity findEntityByBody(Body body){
+		return null;
 	}
 
 }
