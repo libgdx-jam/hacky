@@ -4,16 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 
 import co.porkopolis.hacky.EntityManager;
 import co.porkopolis.hacky.entities.Bomb;
 import co.porkopolis.hacky.entities.Coin;
+import co.porkopolis.hacky.entities.MapBody;
 import co.porkopolis.hacky.entities.Player;
 
 public class EntityBuilder {
 
-	public static void buildEntities(Map map, World world) {
+	public static void buildEntities(Map map, World world, Array<Body> mapBodies) {
 
 		TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get("entityLayer");
 
@@ -37,7 +40,11 @@ public class EntityBuilder {
 					break;
 				default:
 					Gdx.app.log("EntityBuilder", "Warning: Unknow entity at: x "+x+" y "+y+" name "+name);
-
+					break;
+				}
+				
+				for(Body b: mapBodies){
+					EntityManager.addEntity(new MapBody(b));
 				}
 			}
 		}

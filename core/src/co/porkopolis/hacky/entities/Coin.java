@@ -40,7 +40,7 @@ public class Coin implements Entity {
 	}
 
 	@Override
-	public void update() {
+	public void update(float delta) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -52,13 +52,15 @@ public class Coin implements Entity {
 	}
 
 	@Override
-	public void touch() {
-		// TODO Auto-generated method stub
+	public void touch(Entity e) {
+		if( e instanceof Player){
+			body.getWorld().destroyBody(body);
+		}
 		
 	}
 
 	@Override
-	public void touched() {
+	public void touched(Entity e) {
 		// TODO Auto-generated method stub
 		
 	}

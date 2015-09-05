@@ -25,7 +25,7 @@ public class Bomb implements Entity {
 		def.linearDamping = 1.2f;
 
 		body = world.createBody(def);
-
+		
 		CircleShape cir = new CircleShape();
 		cir.setRadius(0.48f);
 
@@ -40,7 +40,7 @@ public class Bomb implements Entity {
 	}
 
 	@Override
-	public void update() {
+	public void update(float delta) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -52,13 +52,13 @@ public class Bomb implements Entity {
 	}
 
 	@Override
-	public void touch() {
+	public void touch(Entity e) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void touched() {
+	public void touched(Entity e) {
 		// TODO Auto-generated method stub
 		
 	}

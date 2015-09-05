@@ -2,7 +2,7 @@ package co.porkopolis.hacky;
 
 import com.badlogic.gdx.Game;
 
-import co.porkopolis.screens.GameScreen;
+import co.porkopolis.hacky.screens.GameScreen;
 
 public class Main extends Game {
 

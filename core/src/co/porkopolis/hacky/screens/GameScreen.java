@@ -1,4 +1,4 @@
-package co.porkopolis.screens;
+package co.porkopolis.hacky.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -25,6 +25,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
 import co.porkopolis.hacky.EntityManager;
+import co.porkopolis.hacky.entities.Entity;
 import co.porkopolis.hacky.entities.Player;
 import co.porkopolis.hacky.untils.EntityBuilder;
 import co.porkopolis.hacky.untils.MapBodyBuilder;
@@ -72,9 +73,7 @@ public class GameScreen implements Screen {
 		mapWidth = mainLayer.getWidth();
 		mapHeight = mainLayer.getHeight();
 
-		Array<Body> mapBodies = MapBodyBuilder.buildShapes(tiledMap, 32, world);
-		EntityBuilder.buildEntities(tiledMap, world);
-
+		EntityBuilder.buildEntities(tiledMap, world, MapBodyBuilder.buildShapes(tiledMap, 32, world));
 	}
 
 	@Override
@@ -123,16 +122,23 @@ public class GameScreen implements Screen {
 
 			@Override
 			public void beginContact(Contact contact) {
-				Fixture fixtureA = contact.getFixtureA();
-				Fixture fixtureB = contact.getFixtureB();
-				Gdx.app.log("beginContact", "between " + fixtureA.toString() + " and " + fixtureB.toString());
+				Entity entityA = (Entity)contact.getFixtureA().getBody().getUserData();
+				Entity entityB = (Entity)contact.getFixtureA().getBody().getUserData();
+				
+				if(entityA != null && entityB != null){
+					entityA.touch(entityB);
+					entityB.touched(entityA);					
+				}
+				else{
+					Gdx.app.log("Warning", "Phyics body is not an entity, all objects with bodyes should be entities.");
+				}
+				
+				
 			}
 
 			@Override
 			public void endContact(Contact contact) {
-				Fixture fixtureA = contact.getFixtureA();
-				Fixture fixtureB = contact.getFixtureB();
-				Gdx.app.log("endContact", "between " + fixtureA.toString() + " and " + fixtureB.toString());
+ 
 			}
 
 			@Override
