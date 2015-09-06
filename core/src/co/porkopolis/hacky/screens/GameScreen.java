@@ -73,7 +73,9 @@ public class GameScreen implements Screen {
 		mapWidth = mainLayer.getWidth();
 		mapHeight = mainLayer.getHeight();
 
-		EntityBuilder.buildEntities(tiledMap, world, MapBodyBuilder.buildShapes(tiledMap, 32, world));
+		Array<Body> mapBodies = MapBodyBuilder.buildShapes(tiledMap, 32, world);
+		EntityBuilder.buildEntities(tiledMap, world, mapBodies);
+		mapBodies = null;
 	}
 
 	@Override
@@ -123,16 +125,14 @@ public class GameScreen implements Screen {
 			@Override
 			public void beginContact(Contact contact) {
 				Entity entityA = (Entity)contact.getFixtureA().getBody().getUserData();
-				Entity entityB = (Entity)contact.getFixtureA().getBody().getUserData();
-				
+				Entity entityB = (Entity)contact.getFixtureB().getBody().getUserData();
 				if(entityA != null && entityB != null){
 					entityA.touch(entityB);
-					entityB.touched(entityA);					
+					entityB.touch(entityA);
 				}
 				else{
-					Gdx.app.log("Warning", "Phyics body is not an entity, all objects with bodyes should be entities.");
+					Gdx.app.log("Warning:", "Body is not an entity. All bodys must be entitys");
 				}
-				
 				
 			}
 

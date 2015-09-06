@@ -1,5 +1,6 @@
 package co.porkopolis.hacky;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Array;
 
@@ -15,15 +16,27 @@ public class EntityManager {
 	public static void addEntity(Entity e){
 		entities.add(e);
 	}
+	public static void removeEntity(Entity e){
+		if( entities.contains(e, true)){
+			e.destroy();
+			entities.removeValue(e, true);
+		}
+		else{
+			Gdx.app.log("Warning", "Entity was not in enity array");
+		}
+		
+	}
+	public static void update(float delta){
+		for(Entity e: entities){
+			e.update(delta);
+		}
+	}
 	public static void wakeAll(){
 		for(Entity e: entities){
 			if(e.getBody() != null){
 				e.getBody().setAwake(true);
 			}
 		}
-	}
-	public static Entity findEntityByBody(Body body){
-		return null;
 	}
 
 }

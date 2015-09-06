@@ -36,6 +36,7 @@ public class Bomb implements Entity {
 		fDef.restitution = 0.01f;
 
 		Fixture fixture = body.createFixture(fDef);
+		fixture.setUserData(this);
 		body.setUserData(this);
 	}
 
@@ -58,13 +59,13 @@ public class Bomb implements Entity {
 	}
 
 	@Override
-	public void touched(Entity e) {
+	public void endTouch() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void endTouch() {
+	public void destroy() {
 		// TODO Auto-generated method stub
 		
 	}

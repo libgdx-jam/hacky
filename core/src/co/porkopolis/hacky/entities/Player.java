@@ -35,6 +35,7 @@ public class Player implements Entity {
 		fDef.restitution = 0.01f;
 
 		Fixture fixture = body.createFixture(fDef);
+		fixture.setUserData(this);
 		body.setUserData(this);
 	}
 
@@ -53,34 +54,25 @@ public class Player implements Entity {
 	@Override
 	public void touch(Entity e) {
 		if(e instanceof Coin){
-			System.out.println("player touches a coin");
-		}
-		if(e instanceof Bomb){
-			System.out.println("player touches a bomb");
-		}
-		if(e instanceof MapBody){
-			System.out.println("player touches a map body");
+			System.out.println("yea");
 		}
 		
-	}
-
-	@Override
-	public void touched(Entity e) {
-		if(e instanceof Coin){
-			System.out.println("player touched a coin");
-		}
-		if(e instanceof Bomb){
-			System.out.println("player touched a bomb");
-		}
-		if(e instanceof MapBody){
-			System.out.println("player touched a map body");
-		}
 	}
 
 	@Override
 	public void endTouch() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public String toString(){
+		return "player";
 	}
 
 }

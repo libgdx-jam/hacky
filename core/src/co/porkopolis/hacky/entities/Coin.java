@@ -36,6 +36,7 @@ public class Coin implements Entity {
 		fDef.isSensor = true;
 
 		Fixture fixture = body.createFixture(fDef);
+		fixture.setUserData(this);
 		body.setUserData(this);
 	}
 
@@ -53,20 +54,17 @@ public class Coin implements Entity {
 
 	@Override
 	public void touch(Entity e) {
-		if( e instanceof Player){
-			body.getWorld().destroyBody(body);
-		}
-		
-	}
-
-	@Override
-	public void touched(Entity e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void endTouch() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void destroy() {
 		// TODO Auto-generated method stub
 		
 	}

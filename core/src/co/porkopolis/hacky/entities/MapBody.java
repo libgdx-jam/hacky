@@ -30,16 +30,19 @@ public class MapBody implements Entity{
 	}
 
 	@Override
-	public void touched(Entity e) {
+	public void endTouch() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void endTouch() {
+	public void destroy() {
 		// TODO Auto-generated method stub
 		
 	}
-	
+	@Override
+	public String toString(){
+		return "mapBody";
+	}
 
 }
