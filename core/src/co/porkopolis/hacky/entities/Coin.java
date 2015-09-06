@@ -53,8 +53,7 @@ public class Coin implements Entity {
 	}
 
 	@Override
-	public void touch(Entity e) {
-		
+	public void touch(Entity e) {	
 	}
 
 	@Override
@@ -65,8 +64,7 @@ public class Coin implements Entity {
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 

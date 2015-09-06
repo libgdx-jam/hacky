@@ -9,6 +9,8 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
+import co.porkopolis.hacky.EntityManager;
+
 public class Player implements Entity {
 	private Vector2 position;
 	private Body body;
@@ -54,7 +56,7 @@ public class Player implements Entity {
 	@Override
 	public void touch(Entity e) {
 		if(e instanceof Coin){
-			System.out.println("yea");
+			EntityManager.removeEntity(e);
 		}
 		
 	}

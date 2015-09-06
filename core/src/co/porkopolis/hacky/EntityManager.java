@@ -8,6 +8,7 @@ import co.porkopolis.hacky.entities.Entity;
 
 public class EntityManager {
 	private static Array<Entity> entities = new Array<Entity>();
+	private static Array<Body> destroyBodyies = new Array<Body>();
 	
 	public static Entity getEntity(int index){
 		return entities.get(index);
@@ -18,7 +19,7 @@ public class EntityManager {
 	}
 	public static void removeEntity(Entity e){
 		if( entities.contains(e, true)){
-			e.destroy();
+			destroyBodyies.add(e.getBody());
 			entities.removeValue(e, true);
 		}
 		else{
@@ -35,6 +36,14 @@ public class EntityManager {
 		for(Entity e: entities){
 			if(e.getBody() != null){
 				e.getBody().setAwake(true);
+			}
+		}
+	}
+	public static void destroyBodies(){
+		for(Body b: destroyBodyies){
+			if(!b.getWorld().isLocked()){
+				b.getWorld().destroyBody(b);
+				destroyBodyies.removeValue(b, true);
 			}
 		}
 	}
