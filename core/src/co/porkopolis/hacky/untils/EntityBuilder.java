@@ -13,6 +13,7 @@ import co.porkopolis.hacky.entities.Bomb;
 import co.porkopolis.hacky.entities.Coin;
 import co.porkopolis.hacky.entities.MapBody;
 import co.porkopolis.hacky.entities.Player;
+import co.porkopolis.hacky.entities.PlayerBlocker;
 
 public class EntityBuilder {
 
@@ -37,6 +38,9 @@ public class EntityBuilder {
 					break;
 				case "bomb":
 					EntityManager.addEntity(new Bomb(new Vector2(x + 0.5f, y + 0.5f), world));
+					break;
+				case "block":
+					EntityManager.addEntity(new PlayerBlocker(new Vector2(x + 0.5f, y + 0.5f), world));
 					break;
 				default:
 					Gdx.app.log("EntityBuilder", "Warning: Unknow entity at: x "+x+" y "+y+" name "+name);

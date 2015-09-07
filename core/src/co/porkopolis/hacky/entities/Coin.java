@@ -9,6 +9,8 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 
+import co.porkopolis.hacky.untils.Box2dConstants;
+
 public class Coin implements Entity {
 	private Vector2 position;
 	private Body body;
@@ -34,6 +36,8 @@ public class Coin implements Entity {
 		fDef.friction = 0.0f;
 		fDef.restitution = 0.01f;
 		fDef.isSensor = true;
+		fDef.filter.categoryBits = Box2dConstants.COIN;
+		fDef.filter.maskBits = Box2dConstants.PLAYER;
 
 		Fixture fixture = body.createFixture(fDef);
 		fixture.setUserData(this);

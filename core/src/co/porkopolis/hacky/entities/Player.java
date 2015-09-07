@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
 import co.porkopolis.hacky.EntityManager;
+import co.porkopolis.hacky.untils.Box2dConstants;
 
 public class Player implements Entity {
 	private Vector2 position;
@@ -35,6 +36,9 @@ public class Player implements Entity {
 		fDef.density = 0.60f;
 		fDef.friction = 0.0f;
 		fDef.restitution = 0.01f;
+		fDef.filter.categoryBits = Box2dConstants.PLAYER;
+		fDef.filter.maskBits = Box2dConstants.COIN | Box2dConstants.DEFUALT | Box2dConstants.ENEMIES
+				| Box2dConstants.PLAYER_BLOCKER | Box2dConstants.WORLD;
 
 		Fixture fixture = body.createFixture(fDef);
 		fixture.setUserData(this);
@@ -50,30 +54,31 @@ public class Player implements Entity {
 	@Override
 	public void update(float delta) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void touch(Entity e) {
-		if(e instanceof Coin){
+		if (e instanceof Coin) {
 			EntityManager.removeEntity(e);
 		}
-		
+
 	}
 
 	@Override
 	public void endTouch() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
+
 	}
+
 	@Override
-	public String toString(){
+	public String toString() {
 		return "player";
 	}
 

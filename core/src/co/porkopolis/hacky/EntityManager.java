@@ -13,7 +13,6 @@ public class EntityManager {
 	public static Entity getEntity(int index){
 		return entities.get(index);
 	}
-	
 	public static void addEntity(Entity e){
 		entities.add(e);
 	}

@@ -1,6 +1,5 @@
 package co.porkopolis.hacky.untils;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
@@ -17,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
@@ -56,7 +56,11 @@ public class MapBodyBuilder {
 			BodyDef bd = new BodyDef();
 			bd.type = BodyType.StaticBody;
 			Body body = world.createBody(bd);
-			body.createFixture(shape, 1);
+			FixtureDef fDef = new FixtureDef();
+			fDef.shape = shape;
+			fDef.filter.categoryBits = Box2dConstants.WORLD;
+			fDef.filter.maskBits = Box2dConstants.ENEMIES | Box2dConstants.PLAYER | Box2dConstants.DEFUALT;
+			body.createFixture(fDef);
 
 			bodies.add(body);
 
