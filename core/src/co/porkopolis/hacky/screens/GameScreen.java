@@ -1,7 +1,15 @@
 package co.porkopolis.hacky.screens;
 
+import co.porkopolis.hacky.EntityManager;
+import co.porkopolis.hacky.entities.Entity;
+import co.porkopolis.hacky.entities.Player;
+import co.porkopolis.hacky.untils.EntityBuilder;
+import co.porkopolis.hacky.untils.MapBodyBuilder;
+
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Peripheral;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -19,16 +27,9 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
-import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
-
-import co.porkopolis.hacky.EntityManager;
-import co.porkopolis.hacky.entities.Entity;
-import co.porkopolis.hacky.entities.Player;
-import co.porkopolis.hacky.untils.EntityBuilder;
-import co.porkopolis.hacky.untils.MapBodyBuilder;
 
 public class GameScreen implements Screen {
 
@@ -52,13 +53,16 @@ public class GameScreen implements Screen {
 	private int tileSize;
 	private float mapWidth, mapHeight, angle = MathUtils.PI * 1.25f, dist = 27;
 
+	private boolean available;
+
 	@Override
 	public void show() {
+		available = Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, width, height);
 		camera.translate(-11.5f, -12.5f);
 		camera.update();
-		
+
 		createCollisionListener();
 
 		renderer = new Box2DDebugRenderer();
@@ -68,7 +72,8 @@ public class GameScreen implements Screen {
 
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, 0.03125f);
 
-		TiledMapTileLayer mainLayer = (TiledMapTileLayer) tiledMap.getLayers().get(0);
+		TiledMapTileLayer mainLayer = (TiledMapTileLayer) tiledMap.getLayers()
+				.get(0);
 		tileSize = (int) mainLayer.getTileWidth();
 		mapWidth = mainLayer.getWidth();
 		mapHeight = mainLayer.getHeight();
@@ -83,20 +88,40 @@ public class GameScreen implements Screen {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.gl.glClearColor(0f, 0f, 0f, 0f);
 		EntityManager.destroyBodies();
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-			angle -= 0.01;
-			EntityManager.wakeAll();
+
+		if (Gdx.app.getType() == ApplicationType.Desktop) {
+
+			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+				angle -= 0.01;
+				EntityManager.wakeAll();
+			}
+
+			if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+				angle += 0.01;
+				EntityManager.wakeAll();
+			}
+
+			gravity.x = MathUtils.cos(angle) * (dist - mapWidth / 2)
+					- MathUtils.sin(angle) * (dist - mapHeight / 2) + mapWidth
+					/ 2;
+			gravity.y = MathUtils.sin(angle) * (dist - mapWidth / 2)
+					+ MathUtils.cos(angle) * (dist - mapHeight / 2) + mapHeight
+					/ 2;
+
 		}
 
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-			angle += 0.01;
-			EntityManager.wakeAll();
-		}
+		else if (Gdx.app.getType() == ApplicationType.Android) {
+			if (available) {
+				// Work-in-progress see:
+				// https://github.com/libgdx/libgdx/wiki/Accelerometer
+				gravity.y = -Gdx.input.getAccelerometerX();
+				gravity.x = Gdx.input.getAccelerometerY();
 
-		gravity.x = MathUtils.cos(angle) * (dist - mapWidth / 2) - MathUtils.sin(angle) * (dist - mapHeight / 2)
-				+ mapWidth / 2;
-		gravity.y = MathUtils.sin(angle) * (dist - mapWidth / 2) + MathUtils.cos(angle) * (dist - mapHeight / 2)
-				+ mapHeight / 2;
+			} else {
+				// You have an Android phone that does not have an
+				// accelerometer?
+			}
+		}
 
 		world.setGravity(gravity);
 
@@ -124,21 +149,23 @@ public class GameScreen implements Screen {
 
 			@Override
 			public void beginContact(Contact contact) {
-				Entity entityA = (Entity)contact.getFixtureA().getBody().getUserData();
-				Entity entityB = (Entity)contact.getFixtureB().getBody().getUserData();
-				if(entityA != null && entityB != null){
+				Entity entityA = (Entity) contact.getFixtureA().getBody()
+						.getUserData();
+				Entity entityB = (Entity) contact.getFixtureB().getBody()
+						.getUserData();
+				if (entityA != null && entityB != null) {
 					entityA.touch(entityB);
 					entityB.touch(entityA);
+				} else {
+					Gdx.app.log("Warning:",
+							"Body is not an entity. All bodies must be entitys");
 				}
-				else{
-					Gdx.app.log("Warning:", "Body is not an entity. All bodys must be entitys");
-				}
-				
+
 			}
 
 			@Override
 			public void endContact(Contact contact) {
- 
+
 			}
 
 			@Override
@@ -154,31 +181,26 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void pause() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void resume() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void dispose() {
-		// TODO Auto-generated method stub
 
 	}
 
