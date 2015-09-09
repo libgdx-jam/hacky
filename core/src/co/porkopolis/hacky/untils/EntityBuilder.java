@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Array;
 import co.porkopolis.hacky.EntityManager;
 import co.porkopolis.hacky.entities.Bomb;
 import co.porkopolis.hacky.entities.Coin;
+import co.porkopolis.hacky.entities.Door;
 import co.porkopolis.hacky.entities.MapBody;
 import co.porkopolis.hacky.entities.Player;
 import co.porkopolis.hacky.entities.PlayerBlocker;
@@ -50,6 +51,9 @@ public class EntityBuilder {
 				case "block":
 					EntityManager.addEntity(new PlayerBlocker(new Vector2(
 							x + 0.5f, y + 0.5f), world));
+					break;
+				case "door":
+					EntityManager.addEntity(new Door(new Vector2(x + 0.5f, y + 0.5f), world));
 					break;
 				default:
 					Gdx.app.log("EntityBuilder",
