@@ -59,7 +59,7 @@ public class MapBodyBuilder {
 			FixtureDef fDef = new FixtureDef();
 			fDef.shape = shape;
 			fDef.filter.categoryBits = Box2dConstants.WORLD;
-			fDef.filter.maskBits = Box2dConstants.ENEMIES | Box2dConstants.PLAYER | Box2dConstants.DEFUALT;
+			fDef.filter.maskBits = Box2dConstants.ENEMIES | Box2dConstants.PLAYER | Box2dConstants.DEFUALT| Box2dConstants.WORLD;
 			body.createFixture(fDef);
 
 			bodies.add(body);

@@ -7,6 +7,7 @@ public class Box2dConstants {
 	public static final short COIN = 8;
 	public static final short ENEMIES = 16;
 	public static final short PLAYER_BLOCKER = 32;
+	public static final short DOOR = 64;
 			
 			
 

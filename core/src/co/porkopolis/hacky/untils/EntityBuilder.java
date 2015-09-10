@@ -2,6 +2,8 @@ package co.porkopolis.hacky.untils;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.Map;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -20,54 +22,26 @@ public class EntityBuilder {
 
 	public static void buildEntities(Map map, World world, Array<Body> mapBodies) {
 
-		TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(
-				"entityLayer");
-
-		for (int x = 0; x < layer.getTileWidth(); x++) {
-			for (int y = 0; y < layer.getTileWidth(); y++) {
-				String name = "";
-				if (layer.getCell(x, y) != null)
-					if (layer.getCell(x, y).getTile() != null)
-						if (layer.getCell(x, y).getTile().getProperties() != null)
-							if (layer.getCell(x, y).getTile().getProperties()
-									.get("name") != null)
-								name = (String) layer.getCell(x, y).getTile()
-										.getProperties().get("name");
-				// TODO A string switch statement is a feature not supported by
-				// older JRE's. Try using a for-loop instead.
-				switch (name) {
-				case "playerStart":
-					EntityManager.addEntity(new Player(new Vector2(x + 0.5f,
-							y + 0.5f), world));
-					break;
-				case "coin":
-					EntityManager.addEntity(new Coin(new Vector2(x + 0.5f,
-							y + 0.5f), world));
-					break;
-				case "bomb":
-					EntityManager.addEntity(new Bomb(new Vector2(x + 0.5f,
-							y + 0.5f), world));
-					break;
-				case "block":
-					EntityManager.addEntity(new PlayerBlocker(new Vector2(
-							x + 0.5f, y + 0.5f), world));
-					break;
-				case "door":
-					EntityManager.addEntity(new Door(new Vector2(x + 0.5f, y + 0.5f), world));
-					break;
-				default:
-					Gdx.app.log("EntityBuilder",
-							"Warning: Unknow entity at: x " + x + " y " + y
-									+ " name " + name);
-					break;
-				}
-
-				for (Body b : mapBodies) {
-					EntityManager.addEntity(new MapBody(b));
+		MapObjects objects = (MapObjects) map.getLayers().get("entityLayer").getObjects();
+		for(MapObject o: objects){
+			if(o.getName() != null){
+				System.out.println("name is not null");
+				Float x = o.getProperties().get("x", Float.class);
+				Float y = o.getProperties().get("y", Float.class);
+				System.out.println(o.getName());
+				if(o.getName().equals("playerStart")){
+					EntityManager.addEntity(new Player(new Vector2(10, 10), world));
+					System.out.println("Player Created");
 				}
 			}
 		}
 
-	}
+
+		
+
+		for (Body b : mapBodies) {
+			EntityManager.addEntity(new MapBody(b));
+		}
+}
 
 }

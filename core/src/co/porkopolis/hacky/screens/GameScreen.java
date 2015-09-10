@@ -48,7 +48,7 @@ public class GameScreen implements Screen {
 
 	Player player;
 
-	private short width = 46, height = 50;
+	private short width = 23, height = 25;
 
 	private int tileSize;
 	private float mapWidth, mapHeight, angle = MathUtils.PI * 1.25f, dist = 27;
@@ -60,7 +60,7 @@ public class GameScreen implements Screen {
 		available = Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, width, height);
-		camera.translate(-11.5f, -12.5f);
+		camera.translate(0,0);
 		camera.update();
 
 		createCollisionListener();
