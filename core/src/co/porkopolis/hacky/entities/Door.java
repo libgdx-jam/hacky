@@ -20,7 +20,7 @@ public class Door implements Entity {
 	private RevoluteJam jam;
 
 	public Door(Vector2 startPosition, World world) {
-		jam = new RevoluteJam(new Vector2(startPosition.x-.375f, startPosition.y-.375f), world);
+		jam = new RevoluteJam(new Vector2(startPosition.x-.375f, startPosition.y-.49f), world);
 		EntityManager.addEntity(jam);
 
 		this.position = startPosition;
@@ -42,7 +42,7 @@ public class Door implements Entity {
 		fDef.restitution = 0.01f;
 		fDef.filter.categoryBits = Box2dConstants.WORLD;
 		fDef.filter.maskBits = Box2dConstants.PLAYER | Box2dConstants.DEFUALT | Box2dConstants.ENEMIES
-				| Box2dConstants.PLAYER_BLOCKER;
+				| Box2dConstants.PLAYER_BLOCKER | Box2dConstants.DOOR | Box2dConstants.WORLD;
 
 		Fixture fixture = body.createFixture(fDef);
 

@@ -1,0 +1,1393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="23" height="25" tilewidth="32" tileheight="32" nextobjectid="953">
+ <tileset firstgid="1" name="pac" tilewidth="32" tileheight="32">
+  <image source="pac.png" width="128" height="256"/>
+  <tile id="16">
+   <properties>
+    <property name="name" value="playerStart"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="name" value="bomb"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="name" value="saw"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="name" value="block"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="name" value="door"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="name" value="key"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="name" value="powerUp"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="name" value="warpA"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="name" value="warpB"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="name" value="warpC"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="name" value="warpD"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="titleLayer" width="23" height="25">
+  <data encoding="csv">
+3,6,6,6,6,6,6,6,6,6,6,15,6,6,6,6,6,6,6,6,6,6,4,
+5,8,8,8,8,8,8,8,8,8,8,5,8,8,8,8,8,8,8,8,8,8,5,
+5,8,3,6,4,8,3,6,6,4,8,5,8,3,6,6,4,8,3,6,4,8,5,
+5,8,5,8,5,8,5,8,8,5,8,5,8,5,8,8,5,8,5,8,5,8,5,
+5,8,1,6,2,8,1,6,6,2,8,13,8,1,6,6,2,8,1,6,2,8,5,
+5,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,5,
+5,8,14,6,10,8,9,8,14,6,6,15,6,6,10,8,9,8,14,6,10,8,5,
+5,8,8,8,8,8,5,8,8,8,8,5,8,8,8,8,5,8,8,8,8,8,5,
+1,6,6,6,4,8,16,6,6,10,8,13,8,14,6,6,12,8,3,6,6,6,2,
+8,8,8,8,5,8,5,8,8,8,8,8,8,8,8,8,5,8,5,8,8,8,8,
+8,8,8,8,5,8,5,8,3,10,8,8,8,14,4,8,5,8,5,8,8,8,8,
+6,6,6,6,2,8,13,8,5,8,8,8,8,8,5,8,13,8,1,6,6,6,6,
+8,8,8,8,8,8,8,8,5,8,8,8,8,8,5,8,8,8,8,8,8,8,8,
+6,6,6,6,4,8,9,8,5,8,8,8,8,8,5,8,9,8,3,6,6,6,6,
+8,8,8,8,5,8,5,8,1,6,6,6,6,6,2,8,5,8,5,8,8,8,8,
+8,8,8,8,5,8,5,8,8,8,8,8,8,8,8,8,5,8,5,8,8,8,8,
+3,6,6,6,2,8,13,8,14,6,6,15,6,6,10,8,13,8,1,6,6,6,4,
+5,8,8,8,8,8,8,8,8,8,8,5,8,8,8,8,8,8,8,8,8,8,5,
+5,8,14,6,4,8,14,6,6,10,8,13,8,14,6,6,10,8,3,6,10,8,5,
+5,8,8,8,5,8,8,8,8,8,8,8,8,8,8,8,8,8,5,8,8,8,5,
+16,6,10,8,13,8,9,8,14,6,6,15,6,6,10,8,9,8,13,8,14,6,12,
+5,8,8,8,8,8,5,8,8,8,8,5,8,8,8,8,5,8,8,8,8,8,5,
+5,8,14,6,6,6,11,6,6,10,8,13,8,14,6,6,11,6,6,6,10,8,5,
+5,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,5,
+1,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,2
+</data>
+ </layer>
+ <objectgroup color="#aa0000" name="collisionLayer" visible="0">
+  <object id="118" name="coin" x="0" y="352">
+   <polyline points="0,0 128,0 128,-64 0,-64 0,-352 736,-352 736,-64 608,-64 608,0 736,0 736,32 576,32 576,-96 704,-96 704,-320 384,-320 384,-192 352,-192 352,-320 32,-320 32,-96 160,-96 160,32 0,32 0,0"/>
+  </object>
+  <object id="119" x="64" y="192">
+   <polyline points="0,0 0,32 96,32 96,0 0,0"/>
+  </object>
+  <object id="120" x="64" y="64">
+   <polyline points="0,0 0,96 96,96 96,0 0,0"/>
+  </object>
+  <object id="121" x="192" y="64">
+   <polyline points="0,0 0,96 128,96 128,0 0,0"/>
+  </object>
+  <object id="122" x="192" y="192">
+   <polyline points="0,0 0,192 32,192 32,96 128,96 128,64 32,64 32,0 0,0"/>
+  </object>
+  <object id="123" x="256" y="192">
+   <polyline points="0,0 0,32 96,32 96,96 128,96 128,32 224,32 224,0 0,0"/>
+  </object>
+  <object id="124" x="416" y="64">
+   <polyline points="0,0 0,96 128,96 128,0 0,0"/>
+  </object>
+  <object id="125" x="576" y="64">
+   <polyline points="0,0 0,96 96,96 96,0 0,0"/>
+  </object>
+  <object id="126" x="576" y="192">
+   <polyline points="0,0 0,32 96,32 96,0 0,0"/>
+  </object>
+  <object id="127" name="coin" x="512" y="192">
+   <polyline points="0,0 0,64 -96,64 -96,96 0,96 0,192 32,192 32,0 0,0"/>
+  </object>
+  <object id="128" name="bomb" x="288" y="352">
+   <polyline points="0,0 32,0 32,-32 -32,-32 -32,128 192,128 192,-32 128,-32 128,0 160,0 160,96 0,96 0,0"/>
+  </object>
+  <object id="129" x="192" y="416">
+   <polyline points="0,0 0,128 32,128 32,0 0,0"/>
+  </object>
+  <object id="130" name="coin" x="512" y="416">
+   <polyline points="0,0 0,128 32,128 32,0 0,0"/>
+  </object>
+  <object id="131" name="coin" x="256" y="544">
+   <polyline points="0,0 96,0 96,64 128,64 128,0 224,0 224,-32 0,-32 0,0"/>
+  </object>
+  <object id="132" name="coin" x="0" y="416">
+   <polyline points="0,0 160,0 160,128 32,128 32,224 96,224 96,256 32,256 32,352 704,352 704,256 640,256 640,224 704,224 704,128 576,128 576,0 736,0 736,32 608,32 608,96 736,96 736,384 0,384 0,96 128,96 128,32 0,32 0,0"/>
+  </object>
+  <object id="133" x="64" y="576">
+   <polyline points="0,0 0,32 64,32 64,96 96,96 96,0 0,0"/>
+  </object>
+  <object id="134" x="192" y="576">
+   <polyline points="0,0 0,32 128,32 128,0 0,0"/>
+  </object>
+  <object id="135" x="192" y="640">
+   <polyline points="0,0 0,64 -128,64 -128,96 128,96 128,64 32,64 32,0 0,0"/>
+  </object>
+  <object id="136" name="coin" x="256" y="640">
+   <polyline points="0,0 0,32 96,32 96,96 128,96 128,32 224,32 224,0 0,0"/>
+  </object>
+  <object id="137" name="coin" x="416" y="576">
+   <polyline points="0,0 0,32 128,32 128,0 0,0"/>
+  </object>
+  <object id="138" name="coin" x="512" y="640">
+   <polyline points="0,0 0,64 -96,64 -96,96 160,96 160,64 32,64 32,0 0,0"/>
+  </object>
+  <object id="139" name="coin" x="576" y="576">
+   <polyline points="0,0 0,96 32,96 32,32 96,32 96,0 0,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup name="entityLayer">
+  <properties>
+   <property name="name" value="coin"/>
+  </properties>
+  <object id="646" gid="18" x="288" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="647" gid="18" x="320" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="648" gid="18" x="256" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="649" gid="18" x="416" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="650" gid="18" x="448" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="651" gid="18" x="384" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="652" gid="18" x="416" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="653" gid="18" x="448" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="654" gid="18" x="384" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="655" gid="18" x="512" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="656" gid="18" x="544" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="657" gid="18" x="480" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="663" gid="18" x="672" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="664" gid="18" x="608" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="666" gid="18" x="576" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="667" gid="18" x="640" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="683" gid="18" x="288" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="684" gid="18" x="384" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="685" gid="18" x="256" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="686" gid="18" x="352" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="687" gid="18" x="416" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="688" gid="18" x="320" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="689" gid="18" x="192" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="690" gid="18" x="160" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="691" gid="18" x="224" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="692" gid="18" x="448" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="693" gid="18" x="160" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="694" gid="18" x="256" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="695" gid="18" x="128" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="696" gid="18" x="224" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="697" gid="18" x="288" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="698" gid="18" x="192" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="699" gid="18" x="64" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="700" gid="18" x="32" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="701" gid="18" x="96" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="702" gid="18" x="320" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="703" gid="18" x="480" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="704" gid="18" x="576" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="705" gid="18" x="448" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="706" gid="18" x="544" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="707" gid="18" x="608" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="708" gid="18" x="512" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="709" gid="18" x="384" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="710" gid="18" x="352" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="711" gid="18" x="416" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="712" gid="18" x="640" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="713" gid="18" x="672" y="768" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="714" gid="18" x="512" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="715" gid="18" x="544" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="716" gid="18" x="480" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="717" gid="18" x="32" y="736" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="718" gid="18" x="32" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="719" gid="18" x="96" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="720" gid="18" x="160" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="721" gid="18" x="64" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="722" gid="18" x="128" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="723" gid="18" x="256" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="724" gid="18" x="320" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="725" gid="18" x="224" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="726" gid="18" x="288" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="727" gid="18" x="320" y="736" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="728" gid="18" x="384" y="736" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="729" gid="18" x="384" y="736" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="730" gid="18" x="384" y="736" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="731" gid="18" x="384" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="732" gid="18" x="480" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="733" gid="18" x="416" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="734" gid="18" x="448" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="735" gid="18" x="640" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="736" gid="18" x="672" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="737" gid="18" x="576" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="738" gid="18" x="544" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="739" gid="18" x="608" y="704" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="740" gid="18" x="672" y="736" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="741" gid="18" x="544" y="672" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="742" gid="18" x="608" y="672" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="743" gid="18" x="608" y="672" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="744" gid="18" x="608" y="672" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="745" gid="18" x="608" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="746" gid="18" x="640" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="747" gid="18" x="672" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="748" gid="18" x="672" y="608" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="749" gid="18" x="384" y="608" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="750" gid="18" x="544" y="608" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="751" gid="18" x="224" y="672" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="752" gid="18" x="160" y="608" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="753" gid="18" x="96" y="672" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="754" gid="18" x="96" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="755" gid="18" x="224" y="672" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="756" gid="18" x="96" y="672" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="757" gid="18" x="160" y="672" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="758" gid="18" x="96" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="759" gid="18" x="128" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="760" gid="18" x="160" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="761" gid="18" x="64" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="762" gid="18" x="32" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="763" gid="18" x="256" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="764" gid="18" x="288" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="765" gid="18" x="320" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="766" gid="18" x="224" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="767" gid="18" x="192" y="576" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="768" gid="18" x="320" y="608" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="769" gid="18" x="64" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="770" gid="18" x="32" y="608" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="771" gid="18" x="32" y="640" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="772" gid="18" x="160" y="416" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="773" gid="18" x="160" y="544" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="774" gid="18" x="160" y="448" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="775" gid="18" x="160" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="776" gid="18" x="160" y="480" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="777" gid="18" x="160" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="778" gid="18" x="160" y="384" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="779" gid="18" x="160" y="288" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="780" gid="18" x="160" y="352" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="781" gid="18" x="160" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="787" gid="18" x="160" y="160" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="788" gid="18" x="160" y="128" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="789" gid="18" x="160" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="791" gid="18" x="160" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="792" gid="18" x="160" y="96" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="793" gid="18" x="160" y="224" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="814" gid="18" x="544" y="384" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="815" gid="18" x="544" y="352" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="816" gid="18" x="544" y="544" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="817" gid="18" x="544" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="818" gid="18" x="544" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="819" gid="18" x="544" y="416" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="820" gid="18" x="544" y="128" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="821" gid="18" x="544" y="480" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="822" gid="18" x="544" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="823" gid="18" x="544" y="224" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="824" gid="18" x="544" y="288" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="825" gid="18" x="544" y="96" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="826" gid="18" x="544" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="828" gid="18" x="544" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="829" gid="18" x="544" y="448" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="830" gid="18" x="544" y="160" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="832" gid="18" x="480" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="833" gid="18" x="480" y="448" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="834" gid="18" x="480" y="384" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="835" gid="18" x="480" y="352" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="837" gid="18" x="480" y="416" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="838" gid="18" x="480" y="544" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="840" gid="18" x="480" y="480" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="842" gid="18" x="224" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="843" gid="18" x="224" y="448" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="844" gid="18" x="224" y="384" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="845" gid="18" x="224" y="352" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="847" gid="18" x="224" y="416" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="848" gid="18" x="224" y="544" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="849" gid="18" x="224" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="850" gid="18" x="224" y="480" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="851" gid="18" x="480" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="852" gid="18" x="192" y="416" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="853" gid="18" x="512" y="416" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="854" gid="18" x="256" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="855" gid="18" x="288" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="856" gid="18" x="320" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="857" gid="18" x="352" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="858" gid="18" x="384" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="859" gid="18" x="416" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="860" gid="18" x="448" y="320" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="862" gid="18" x="288" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="863" gid="18" x="224" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="864" gid="18" x="320" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="866" gid="18" x="256" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="867" gid="18" x="320" y="288" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="868" gid="18" x="416" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="869" gid="18" x="384" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="870" gid="18" x="448" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="871" gid="18" x="480" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="872" gid="18" x="320" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="873" gid="18" x="320" y="128" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="874" gid="18" x="320" y="96" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="875" gid="18" x="320" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="876" gid="18" x="320" y="160" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="877" gid="18" x="384" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="878" gid="18" x="384" y="128" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="879" gid="18" x="384" y="96" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="880" gid="18" x="384" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="881" gid="18" x="384" y="160" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="882" gid="18" x="672" y="128" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="883" gid="18" x="672" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="884" gid="18" x="672" y="96" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="885" gid="18" x="672" y="160" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="886" gid="18" x="672" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="887" gid="18" x="448" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="888" gid="18" x="512" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="889" gid="18" x="480" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="890" gid="18" x="416" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="891" gid="18" x="448" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="892" gid="18" x="416" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="893" gid="18" x="480" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="894" gid="18" x="512" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="895" gid="18" x="608" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="896" gid="18" x="576" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="897" gid="18" x="640" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="898" gid="18" x="672" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="899" gid="18" x="672" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="900" gid="18" x="576" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="901" gid="18" x="640" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="902" gid="18" x="608" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="903" gid="18" x="672" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="904" gid="18" x="576" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="905" gid="18" x="640" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="906" gid="18" x="608" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="907" gid="18" x="672" y="224" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="908" gid="18" x="480" y="224" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="909" gid="18" x="384" y="288" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="910" gid="18" x="256" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="911" gid="18" x="224" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="912" gid="18" x="288" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="913" gid="18" x="224" y="224" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="914" gid="18" x="192" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="915" gid="18" x="256" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="916" gid="18" x="288" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="917" gid="18" x="224" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="918" gid="18" x="192" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="919" gid="18" x="32" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="920" gid="18" x="32" y="96" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="921" gid="18" x="32" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="922" gid="18" x="32" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="923" gid="18" x="32" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="924" gid="18" x="32" y="160" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="925" gid="18" x="32" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="926" gid="18" x="32" y="224" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="927" gid="18" x="32" y="128" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="928" gid="18" x="64" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="929" gid="18" x="128" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="930" gid="18" x="96" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="931" gid="18" x="64" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="932" gid="18" x="128" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="933" gid="18" x="96" y="64" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="934" gid="18" x="64" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="935" gid="18" x="128" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="936" gid="18" x="96" y="256" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="937" gid="18" x="352" y="192" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+  <object id="938" gid="21" x="320" y="352" width="32" height="32">
+   <properties>
+    <property name="name" value="playerBlocker"/>
+   </properties>
+  </object>
+  <object id="943" gid="21" x="352" y="352" width="32" height="32">
+   <properties>
+    <property name="name" value="playerBlocker"/>
+   </properties>
+  </object>
+  <object id="944" gid="21" x="384" y="352" width="32" height="32">
+   <properties>
+    <property name="name" value="playerBlocker"/>
+   </properties>
+  </object>
+  <object id="945" gid="19" x="320" y="416" width="32" height="32">
+   <properties>
+    <property name="name" value="bomb"/>
+   </properties>
+  </object>
+  <object id="949" gid="19" x="352" y="416" width="32" height="32">
+   <properties>
+    <property name="name" value="bomb"/>
+   </properties>
+  </object>
+  <object id="950" gid="19" x="384" y="416" width="32" height="32">
+   <properties>
+    <property name="name" value="bomb"/>
+   </properties>
+  </object>
+  <object id="951" gid="17" x="352" y="512" width="32" height="32">
+   <properties>
+    <property name="name" value="playerStart"/>
+   </properties>
+  </object>
+  <object id="952" gid="18" x="480" y="672" width="32" height="32">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

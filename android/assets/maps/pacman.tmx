@@ -1,653 +1,390 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="23" height="25" tilewidth="32" tileheight="32" nextobjectid="25">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="23" height="25" tilewidth="32" tileheight="32" nextobjectid="404">
  <tileset firstgid="1" name="pac" tilewidth="32" tileheight="32">
-  <image source="pac.png" trans="00ff7f" width="128" height="128"/>
+  <image source="pac.png" width="128" height="256"/>
+  <tile id="16">
+   <properties>
+    <property name="name" value="playerStart"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="name" value="coin"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="name" value="bomb"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="name" value="saw"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="name" value="block"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="name" value="door"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="name" value="key"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="name" value="powerUp"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="name" value="warpA"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="name" value="warpB"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="name" value="warpC"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="name" value="warpD"/>
+   </properties>
+  </tile>
  </tileset>
- <layer name="tileLayer" width="23" height="25">
-  <data>
-   <tile gid="3"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="15"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="4"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="3"/>
-   <tile gid="6"/>
-   <tile gid="4"/>
-   <tile gid="8"/>
-   <tile gid="3"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="4"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="3"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="4"/>
-   <tile gid="8"/>
-   <tile gid="3"/>
-   <tile gid="6"/>
-   <tile gid="4"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="1"/>
-   <tile gid="6"/>
-   <tile gid="2"/>
-   <tile gid="8"/>
-   <tile gid="1"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="2"/>
-   <tile gid="8"/>
-   <tile gid="13"/>
-   <tile gid="8"/>
-   <tile gid="1"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="2"/>
-   <tile gid="8"/>
-   <tile gid="1"/>
-   <tile gid="6"/>
-   <tile gid="2"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="9"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="15"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="9"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="1"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="4"/>
-   <tile gid="8"/>
-   <tile gid="16"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="13"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="12"/>
-   <tile gid="8"/>
-   <tile gid="3"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="2"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="3"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="4"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="2"/>
-   <tile gid="8"/>
-   <tile gid="13"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="13"/>
-   <tile gid="8"/>
-   <tile gid="1"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="4"/>
-   <tile gid="8"/>
-   <tile gid="9"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="9"/>
-   <tile gid="8"/>
-   <tile gid="3"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="1"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="2"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="3"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="2"/>
-   <tile gid="8"/>
-   <tile gid="13"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="15"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="13"/>
-   <tile gid="8"/>
-   <tile gid="1"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="4"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="4"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="13"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="3"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="16"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="13"/>
-   <tile gid="8"/>
-   <tile gid="9"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="15"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="9"/>
-   <tile gid="8"/>
-   <tile gid="13"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="12"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="11"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="13"/>
-   <tile gid="8"/>
-   <tile gid="14"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="11"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="10"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="5"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="8"/>
-   <tile gid="5"/>
-   <tile gid="1"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="6"/>
-   <tile gid="2"/>
-  </data>
+ <layer name="titleLayer" width="23" height="25">
+  <data encoding="csv">
+3,6,6,6,6,6,6,6,6,6,6,15,6,6,6,6,6,6,6,6,6,6,4,
+5,8,8,8,8,8,8,8,8,8,8,5,8,8,8,8,8,8,8,8,8,8,5,
+5,8,3,6,4,8,3,6,6,4,8,5,8,3,6,6,4,8,3,6,4,8,5,
+5,8,5,8,5,8,5,8,8,5,8,5,8,5,8,8,5,8,5,8,5,8,5,
+5,8,1,6,2,8,1,6,6,2,8,13,8,1,6,6,2,8,1,6,2,8,5,
+5,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,5,
+5,8,14,6,10,8,9,8,14,6,6,15,6,6,10,8,9,8,14,6,10,8,5,
+5,8,8,8,8,8,5,8,8,8,8,5,8,8,8,8,5,8,8,8,8,8,5,
+1,6,6,6,4,8,16,6,6,10,8,13,8,14,6,6,12,8,3,6,6,6,2,
+8,8,8,8,5,8,5,8,8,8,8,8,8,8,8,8,5,8,5,8,8,8,8,
+8,8,8,8,5,8,5,8,3,10,8,8,8,14,4,8,5,8,5,8,8,8,8,
+6,6,6,6,2,8,13,8,5,8,8,8,8,8,5,8,13,8,1,6,6,6,6,
+8,8,8,8,8,8,8,8,5,8,8,8,8,8,5,8,8,8,8,8,8,8,8,
+6,6,6,6,4,8,9,8,5,8,8,8,8,8,5,8,9,8,3,6,6,6,6,
+8,8,8,8,5,8,5,8,1,6,6,6,6,6,2,8,5,8,5,8,8,8,8,
+8,8,8,8,5,8,5,8,8,8,8,8,8,8,8,8,5,8,5,8,8,8,8,
+3,6,6,6,2,8,13,8,14,6,6,15,6,6,10,8,13,8,1,6,6,6,4,
+5,8,8,8,8,8,8,8,8,8,8,5,8,8,8,8,8,8,8,8,8,8,5,
+5,8,14,6,4,8,14,6,6,10,8,13,8,14,6,6,10,8,3,6,10,8,5,
+5,8,8,8,5,8,8,8,8,8,8,8,8,8,8,8,8,8,5,8,8,8,5,
+16,6,10,8,13,8,9,8,14,6,6,15,6,6,10,8,9,8,13,8,14,6,12,
+5,8,8,8,8,8,5,8,8,8,8,5,8,8,8,8,5,8,8,8,8,8,5,
+5,8,14,6,6,6,11,6,6,10,8,13,8,14,6,6,11,6,6,6,10,8,5,
+5,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,5,
+1,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,2
+</data>
  </layer>
- <objectgroup name="collisionLayer">
-  <object id="2" x="0" y="352">
+ <objectgroup color="#aa0000" name="collisionLayer">
+  <object id="118" name="coin" x="0" y="352">
    <polyline points="0,0 128,0 128,-64 0,-64 0,-352 736,-352 736,-64 608,-64 608,0 736,0 736,32 576,32 576,-96 704,-96 704,-320 384,-320 384,-192 352,-192 352,-320 32,-320 32,-96 160,-96 160,32 0,32 0,0"/>
   </object>
-  <object id="3" x="64" y="192">
+  <object id="119" x="64" y="192">
    <polyline points="0,0 0,32 96,32 96,0 0,0"/>
   </object>
-  <object id="4" x="64" y="64">
+  <object id="120" x="64" y="64">
    <polyline points="0,0 0,96 96,96 96,0 0,0"/>
   </object>
-  <object id="5" x="192" y="64">
+  <object id="121" x="192" y="64">
    <polyline points="0,0 0,96 128,96 128,0 0,0"/>
   </object>
-  <object id="6" x="192" y="192">
+  <object id="122" x="192" y="192">
    <polyline points="0,0 0,192 32,192 32,96 128,96 128,64 32,64 32,0 0,0"/>
   </object>
-  <object id="7" x="256" y="192">
+  <object id="123" x="256" y="192">
    <polyline points="0,0 0,32 96,32 96,96 128,96 128,32 224,32 224,0 0,0"/>
   </object>
-  <object id="8" x="416" y="64">
+  <object id="124" x="416" y="64">
    <polyline points="0,0 0,96 128,96 128,0 0,0"/>
   </object>
-  <object id="9" x="576" y="64">
+  <object id="125" x="576" y="64">
    <polyline points="0,0 0,96 96,96 96,0 0,0"/>
   </object>
-  <object id="10" x="576" y="192">
+  <object id="126" x="576" y="192">
    <polyline points="0,0 0,32 96,32 96,0 0,0"/>
   </object>
-  <object id="11" x="512" y="192">
+  <object id="127" name="coin" x="512" y="192">
    <polyline points="0,0 0,64 -96,64 -96,96 0,96 0,192 32,192 32,0 0,0"/>
   </object>
-  <object id="12" x="288" y="352">
+  <object id="128" name="bomb" x="288" y="352">
    <polyline points="0,0 32,0 32,-32 -32,-32 -32,128 192,128 192,-32 128,-32 128,0 160,0 160,96 0,96 0,0"/>
   </object>
-  <object id="13" x="192" y="416">
+  <object id="129" x="192" y="416">
    <polyline points="0,0 0,128 32,128 32,0 0,0"/>
   </object>
-  <object id="15" x="512" y="416">
+  <object id="130" name="coin" x="512" y="416">
    <polyline points="0,0 0,128 32,128 32,0 0,0"/>
   </object>
-  <object id="16" x="256" y="544">
+  <object id="131" name="coin" x="256" y="544">
    <polyline points="0,0 96,0 96,64 128,64 128,0 224,0 224,-32 0,-32 0,0"/>
   </object>
-  <object id="17" x="0" y="416">
+  <object id="132" name="coin" x="0" y="416">
    <polyline points="0,0 160,0 160,128 32,128 32,224 96,224 96,256 32,256 32,352 704,352 704,256 640,256 640,224 704,224 704,128 576,128 576,0 736,0 736,32 608,32 608,96 736,96 736,384 0,384 0,96 128,96 128,32 0,32 0,0"/>
   </object>
-  <object id="18" x="64" y="576">
+  <object id="133" x="64" y="576">
    <polyline points="0,0 0,32 64,32 64,96 96,96 96,0 0,0"/>
   </object>
-  <object id="19" x="192" y="576">
+  <object id="134" x="192" y="576">
    <polyline points="0,0 0,32 128,32 128,0 0,0"/>
   </object>
-  <object id="20" x="192" y="640">
+  <object id="135" x="192" y="640">
    <polyline points="0,0 0,64 -128,64 -128,96 128,96 128,64 32,64 32,0 0,0"/>
   </object>
-  <object id="21" x="256" y="640">
+  <object id="136" name="coin" x="256" y="640">
    <polyline points="0,0 0,32 96,32 96,96 128,96 128,32 224,32 224,0 0,0"/>
   </object>
-  <object id="22" x="416" y="576">
+  <object id="137" name="coin" x="416" y="576">
    <polyline points="0,0 0,32 128,32 128,0 0,0"/>
   </object>
-  <object id="23" x="512" y="640">
+  <object id="138" name="coin" x="512" y="640">
    <polyline points="0,0 0,64 -96,64 -96,96 160,96 160,64 32,64 32,0 0,0"/>
   </object>
-  <object id="24" x="576" y="576">
+  <object id="139" name="coin" x="576" y="576">
    <polyline points="0,0 0,96 32,96 32,32 96,32 96,0 0,0"/>
   </object>
+ </objectgroup>
+ <objectgroup name="entityLayer">
+  <object id="174" name="coin" gid="18" x="544" y="640" width="32" height="32"/>
+  <object id="175" name="coin" gid="18" x="544" y="608" width="32" height="32"/>
+  <object id="176" name="coin" gid="18" x="544" y="576" width="32" height="32"/>
+  <object id="177" name="coin" gid="18" x="544" y="544" width="32" height="32"/>
+  <object id="178" name="coin" gid="18" x="544" y="352" width="32" height="32"/>
+  <object id="179" name="coin" gid="18" x="544" y="384" width="32" height="32"/>
+  <object id="180" name="coin" gid="18" x="544" y="416" width="32" height="32"/>
+  <object id="181" name="coin" gid="18" x="544" y="448" width="32" height="32"/>
+  <object id="182" name="coin" gid="18" x="544" y="480" width="32" height="32"/>
+  <object id="183" name="coin" gid="18" x="544" y="512" width="32" height="32"/>
+  <object id="184" name="coin" gid="18" x="576" y="576" width="32" height="32"/>
+  <object id="185" name="coin" gid="18" x="608" y="576" width="32" height="32"/>
+  <object id="186" name="coin" gid="18" x="640" y="576" width="32" height="32"/>
+  <object id="187" name="coin" gid="18" x="672" y="576" width="32" height="32"/>
+  <object id="188" name="coin" gid="18" x="544" y="672" width="32" height="32"/>
+  <object id="189" name="coin" gid="18" x="544" y="704" width="32" height="32"/>
+  <object id="190" name="coin" gid="18" x="576" y="704" width="32" height="32"/>
+  <object id="191" name="coin" gid="18" x="608" y="704" width="32" height="32"/>
+  <object id="192" name="coin" gid="18" x="608" y="672" width="32" height="32"/>
+  <object id="193" name="coin" gid="18" x="608" y="640" width="32" height="32"/>
+  <object id="194" name="coin" gid="18" x="640" y="640" width="32" height="32"/>
+  <object id="195" name="coin" gid="18" x="672" y="640" width="32" height="32"/>
+  <object id="196" name="coin" gid="18" x="672" y="608" width="32" height="32"/>
+  <object id="197" name="coin" gid="18" x="640" y="704" width="32" height="32"/>
+  <object id="198" name="coin" gid="18" x="672" y="704" width="32" height="32"/>
+  <object id="199" name="coin" gid="18" x="672" y="736" width="32" height="32"/>
+  <object id="200" name="coin" gid="18" x="672" y="768" width="32" height="32"/>
+  <object id="201" name="coin" gid="18" x="640" y="768" width="32" height="32"/>
+  <object id="202" name="coin" gid="18" x="608" y="768" width="32" height="32"/>
+  <object id="203" name="coin" gid="18" x="576" y="768" width="32" height="32"/>
+  <object id="204" name="coin" gid="18" x="544" y="768" width="32" height="32"/>
+  <object id="205" name="coin" gid="18" x="512" y="768" width="32" height="32"/>
+  <object id="206" name="coin" gid="18" x="480" y="768" width="32" height="32"/>
+  <object id="207" name="coin" gid="18" x="480" y="768" width="32" height="32"/>
+  <object id="208" gid="18" x="544" y="320" width="32" height="32"/>
+  <object id="209" gid="18" x="544" y="288" width="32" height="32"/>
+  <object id="210" gid="18" x="544" y="256" width="32" height="32"/>
+  <object id="211" gid="18" x="640" y="256" width="32" height="32"/>
+  <object id="212" gid="18" x="608" y="256" width="32" height="32"/>
+  <object id="213" gid="18" x="576" y="256" width="32" height="32"/>
+  <object id="214" gid="18" x="672" y="256" width="32" height="32"/>
+  <object id="215" gid="18" x="544" y="64" width="32" height="32"/>
+  <object id="216" gid="18" x="544" y="96" width="32" height="32"/>
+  <object id="217" gid="18" x="544" y="160" width="32" height="32"/>
+  <object id="218" gid="18" x="544" y="128" width="32" height="32"/>
+  <object id="219" gid="18" x="544" y="192" width="32" height="32"/>
+  <object id="220" gid="18" x="544" y="224" width="32" height="32"/>
+  <object id="221" gid="18" x="576" y="192" width="32" height="32"/>
+  <object id="222" gid="18" x="576" y="192" width="32" height="32"/>
+  <object id="223" gid="18" x="608" y="192" width="32" height="32"/>
+  <object id="224" gid="18" x="640" y="192" width="32" height="32"/>
+  <object id="225" gid="18" x="672" y="192" width="32" height="32"/>
+  <object id="226" gid="18" x="672" y="224" width="32" height="32"/>
+  <object id="227" gid="18" x="672" y="160" width="32" height="32"/>
+  <object id="228" gid="18" x="672" y="128" width="32" height="32"/>
+  <object id="229" gid="18" x="672" y="96" width="32" height="32"/>
+  <object id="230" gid="18" x="672" y="64" width="32" height="32"/>
+  <object id="231" gid="18" x="640" y="64" width="32" height="32"/>
+  <object id="232" gid="18" x="608" y="64" width="32" height="32"/>
+  <object id="233" gid="18" x="576" y="64" width="32" height="32"/>
+  <object id="234" gid="18" x="384" y="64" width="32" height="32"/>
+  <object id="235" gid="18" x="416" y="64" width="32" height="32"/>
+  <object id="236" gid="18" x="448" y="64" width="32" height="32"/>
+  <object id="237" gid="18" x="480" y="64" width="32" height="32"/>
+  <object id="238" gid="18" x="512" y="64" width="32" height="32"/>
+  <object id="239" gid="18" x="512" y="192" width="32" height="32"/>
+  <object id="240" gid="18" x="480" y="192" width="32" height="32"/>
+  <object id="242" gid="18" x="416" y="192" width="32" height="32"/>
+  <object id="243" gid="18" x="448" y="192" width="32" height="32"/>
+  <object id="244" gid="18" x="384" y="192" width="32" height="32"/>
+  <object id="245" gid="18" x="384" y="160" width="32" height="32"/>
+  <object id="246" gid="18" x="384" y="128" width="32" height="32"/>
+  <object id="247" gid="18" x="384" y="96" width="32" height="32"/>
+  <object id="248" gid="18" x="320" y="192" width="32" height="32"/>
+  <object id="249" gid="18" x="352" y="192" width="32" height="32"/>
+  <object id="250" gid="18" x="256" y="192" width="32" height="32"/>
+  <object id="251" gid="18" x="288" y="192" width="32" height="32"/>
+  <object id="252" gid="18" x="224" y="192" width="32" height="32"/>
+  <object id="253" gid="18" x="192" y="192" width="32" height="32"/>
+  <object id="254" gid="18" x="160" y="192" width="32" height="32"/>
+  <object id="255" gid="18" x="128" y="192" width="32" height="32"/>
+  <object id="256" gid="18" x="96" y="192" width="32" height="32"/>
+  <object id="257" gid="18" x="64" y="192" width="32" height="32"/>
+  <object id="258" gid="18" x="32" y="192" width="32" height="32"/>
+  <object id="259" gid="18" x="32" y="160" width="32" height="32"/>
+  <object id="260" gid="18" x="32" y="128" width="32" height="32"/>
+  <object id="261" gid="18" x="32" y="96" width="32" height="32"/>
+  <object id="262" gid="18" x="32" y="64" width="32" height="32"/>
+  <object id="263" gid="18" x="64" y="64" width="32" height="32"/>
+  <object id="264" gid="18" x="96" y="64" width="32" height="32"/>
+  <object id="265" gid="18" x="128" y="64" width="32" height="32"/>
+  <object id="266" gid="18" x="160" y="64" width="32" height="32"/>
+  <object id="267" gid="18" x="160" y="128" width="32" height="32"/>
+  <object id="268" gid="18" x="160" y="160" width="32" height="32"/>
+  <object id="269" gid="18" x="160" y="96" width="32" height="32"/>
+  <object id="270" gid="18" x="192" y="64" width="32" height="32"/>
+  <object id="271" gid="18" x="224" y="64" width="32" height="32"/>
+  <object id="272" gid="18" x="256" y="64" width="32" height="32"/>
+  <object id="273" gid="18" x="288" y="64" width="32" height="32"/>
+  <object id="274" gid="18" x="320" y="64" width="32" height="32"/>
+  <object id="275" gid="18" x="320" y="96" width="32" height="32"/>
+  <object id="276" gid="18" x="320" y="128" width="32" height="32"/>
+  <object id="277" gid="18" x="320" y="160" width="32" height="32"/>
+  <object id="278" gid="18" x="160" y="224" width="32" height="32"/>
+  <object id="279" gid="18" x="160" y="256" width="32" height="32"/>
+  <object id="280" gid="18" x="160" y="320" width="32" height="32"/>
+  <object id="281" name="door" gid="22" x="192" y="416" width="32" height="32"/>
+  <object id="283" name="doorStop" gid="29" x="160" y="448" width="32" height="32"/>
+  <object id="286" name="doorStop" gid="29" x="192" y="384" width="32" height="32"/>
+  <object id="288" name="bomb" gid="19" x="320" y="416" width="32" height="32"/>
+  <object id="289" name="bomb" gid="19" x="352" y="416" width="32" height="32"/>
+  <object id="290" name="bomb" gid="19" x="384" y="416" width="32" height="32"/>
+  <object id="291" name="playerBlocker" gid="21" x="384" y="352" width="32" height="32"/>
+  <object id="292" name="playerBlocker" gid="21" x="352" y="352" width="32" height="32"/>
+  <object id="293" name="playerBlocker" gid="21" x="320" y="352" width="32" height="32"/>
+  <object id="294" name="playerStart" gid="17" x="352" y="640" width="32" height="32"/>
+  <object id="295" gid="20" x="480" y="768" width="32" height="32"/>
+  <object id="296" gid="18" x="480" y="768" width="32" height="32"/>
+  <object id="297" gid="18" x="448" y="768" width="32" height="32"/>
+  <object id="298" gid="18" x="448" y="768" width="32" height="32"/>
+  <object id="299" gid="18" x="288" y="768" width="32" height="32"/>
+  <object id="300" gid="18" x="384" y="768" width="32" height="32"/>
+  <object id="301" gid="18" x="384" y="768" width="32" height="32"/>
+  <object id="302" gid="18" x="448" y="768" width="32" height="32"/>
+  <object id="303" gid="18" x="416" y="768" width="32" height="32"/>
+  <object id="304" gid="18" x="352" y="768" width="32" height="32"/>
+  <object id="305" gid="18" x="320" y="768" width="32" height="32"/>
+  <object id="306" gid="18" x="224" y="768" width="32" height="32"/>
+  <object id="307" gid="18" x="192" y="768" width="32" height="32"/>
+  <object id="308" gid="18" x="128" y="768" width="32" height="32"/>
+  <object id="309" gid="18" x="160" y="768" width="32" height="32"/>
+  <object id="310" gid="18" x="256" y="768" width="32" height="32"/>
+  <object id="311" gid="18" x="32" y="736" width="32" height="32"/>
+  <object id="312" gid="18" x="32" y="704" width="32" height="32"/>
+  <object id="313" gid="18" x="64" y="704" width="32" height="32"/>
+  <object id="314" gid="18" x="128" y="704" width="32" height="32"/>
+  <object id="315" gid="18" x="160" y="704" width="32" height="32"/>
+  <object id="316" gid="18" x="96" y="704" width="32" height="32"/>
+  <object id="317" gid="18" x="96" y="768" width="32" height="32"/>
+  <object id="318" gid="18" x="64" y="768" width="32" height="32"/>
+  <object id="319" gid="18" x="32" y="768" width="32" height="32"/>
+  <object id="320" gid="18" x="224" y="704" width="32" height="32"/>
+  <object id="321" gid="18" x="256" y="704" width="32" height="32"/>
+  <object id="322" gid="18" x="288" y="704" width="32" height="32"/>
+  <object id="323" gid="18" x="320" y="704" width="32" height="32"/>
+  <object id="324" gid="18" x="320" y="736" width="32" height="32"/>
+  <object id="325" gid="18" x="384" y="736" width="32" height="32"/>
+  <object id="326" gid="18" x="384" y="704" width="32" height="32"/>
+  <object id="327" gid="18" x="448" y="704" width="32" height="32"/>
+  <object id="328" gid="18" x="416" y="704" width="32" height="32"/>
+  <object id="329" gid="18" x="480" y="704" width="32" height="32"/>
+  <object id="330" gid="18" x="480" y="640" width="32" height="32"/>
+  <object id="331" gid="18" x="480" y="672" width="32" height="32"/>
+  <object id="332" gid="18" x="512" y="640" width="32" height="32"/>
+  <object id="333" gid="18" x="384" y="640" width="32" height="32"/>
+  <object id="334" gid="18" x="416" y="640" width="32" height="32"/>
+  <object id="335" gid="18" x="448" y="640" width="32" height="32"/>
+  <object id="336" gid="18" x="384" y="608" width="32" height="32"/>
+  <object id="337" gid="18" x="384" y="576" width="32" height="32"/>
+  <object id="338" gid="18" x="448" y="576" width="32" height="32"/>
+  <object id="339" gid="18" x="416" y="576" width="32" height="32"/>
+  <object id="340" gid="18" x="480" y="576" width="32" height="32"/>
+  <object id="341" gid="18" x="512" y="576" width="32" height="32"/>
+  <object id="342" gid="18" x="480" y="544" width="32" height="32"/>
+  <object id="343" gid="18" x="480" y="512" width="32" height="32"/>
+  <object id="344" gid="18" x="480" y="480" width="32" height="32"/>
+  <object id="345" gid="18" x="480" y="448" width="32" height="32"/>
+  <object id="346" gid="18" x="480" y="416" width="32" height="32"/>
+  <object id="347" gid="18" x="512" y="416" width="32" height="32"/>
+  <object id="348" gid="18" x="256" y="512" width="32" height="32"/>
+  <object id="349" gid="18" x="320" y="512" width="32" height="32"/>
+  <object id="350" gid="18" x="320" y="512" width="32" height="32"/>
+  <object id="351" gid="18" x="288" y="512" width="32" height="32"/>
+  <object id="352" gid="18" x="352" y="512" width="32" height="32"/>
+  <object id="353" gid="18" x="384" y="512" width="32" height="32"/>
+  <object id="354" gid="18" x="416" y="512" width="32" height="32"/>
+  <object id="355" gid="18" x="448" y="512" width="32" height="32"/>
+  <object id="356" gid="18" x="224" y="512" width="32" height="32"/>
+  <object id="357" gid="18" x="224" y="544" width="32" height="32"/>
+  <object id="358" gid="18" x="224" y="576" width="32" height="32"/>
+  <object id="359" gid="18" x="256" y="576" width="32" height="32"/>
+  <object id="360" gid="18" x="288" y="576" width="32" height="32"/>
+  <object id="361" gid="18" x="320" y="576" width="32" height="32"/>
+  <object id="362" gid="18" x="320" y="608" width="32" height="32"/>
+  <object id="363" gid="18" x="320" y="640" width="32" height="32"/>
+  <object id="364" gid="18" x="288" y="640" width="32" height="32"/>
+  <object id="365" gid="18" x="256" y="640" width="32" height="32"/>
+  <object id="366" gid="18" x="224" y="640" width="32" height="32"/>
+  <object id="367" gid="18" x="224" y="672" width="32" height="32"/>
+  <object id="368" gid="18" x="160" y="608" width="32" height="32"/>
+  <object id="369" gid="18" x="160" y="640" width="32" height="32"/>
+  <object id="370" gid="18" x="192" y="640" width="32" height="32"/>
+  <object id="371" gid="18" x="160" y="672" width="32" height="32"/>
+  <object id="372" gid="18" x="96" y="672" width="32" height="32"/>
+  <object id="373" gid="18" x="96" y="640" width="32" height="32"/>
+  <object id="374" gid="18" x="32" y="640" width="32" height="32"/>
+  <object id="375" gid="18" x="64" y="640" width="32" height="32"/>
+  <object id="376" gid="18" x="32" y="608" width="32" height="32"/>
+  <object id="377" gid="18" x="32" y="576" width="32" height="32"/>
+  <object id="378" gid="18" x="64" y="576" width="32" height="32"/>
+  <object id="379" gid="18" x="96" y="576" width="32" height="32"/>
+  <object id="380" gid="18" x="128" y="576" width="32" height="32"/>
+  <object id="381" gid="18" x="160" y="576" width="32" height="32"/>
+  <object id="382" gid="18" x="192" y="576" width="32" height="32"/>
+  <object id="383" gid="18" x="160" y="544" width="32" height="32"/>
+  <object id="384" gid="18" x="160" y="512" width="32" height="32"/>
+  <object id="385" gid="18" x="160" y="480" width="32" height="32"/>
+  <object id="386" gid="18" x="160" y="448" width="32" height="32"/>
+  <object id="387" gid="18" x="160" y="416" width="32" height="32"/>
+  <object id="388" gid="18" x="192" y="416" width="32" height="32"/>
+  <object id="389" gid="18" x="160" y="384" width="32" height="32"/>
+  <object id="390" gid="18" x="160" y="320" width="32" height="32"/>
+  <object id="391" gid="18" x="160" y="352" width="32" height="32"/>
+  <object id="392" gid="18" x="160" y="288" width="32" height="32"/>
+  <object id="393" gid="18" x="224" y="320" width="32" height="32"/>
+  <object id="394" gid="18" x="224" y="352" width="32" height="32"/>
+  <object id="395" gid="18" x="224" y="416" width="32" height="32"/>
+  <object id="396" gid="18" x="224" y="384" width="32" height="32"/>
+  <object id="397" gid="18" x="224" y="448" width="32" height="32"/>
+  <object id="398" gid="18" x="224" y="480" width="32" height="32"/>
+  <object id="399" gid="18" x="32" y="256" width="32" height="32"/>
+  <object id="400" gid="18" x="32" y="224" width="32" height="32"/>
+  <object id="401" gid="18" x="64" y="256" width="32" height="32"/>
+  <object id="402" gid="18" x="96" y="256" width="32" height="32"/>
+  <object id="403" gid="18" x="128" y="256" width="32" height="32"/>
  </objectgroup>
 </map>

@@ -68,7 +68,7 @@ public class GameScreen implements Screen {
 		renderer = new Box2DDebugRenderer();
 		renderer.setDrawBodies(true);
 
-		tiledMap = new TmxMapLoader().load("maps/pacman3.tmx");
+		tiledMap = new TmxMapLoader().load("maps/pacman4.tmx");
 
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, 0.03125f);
 
