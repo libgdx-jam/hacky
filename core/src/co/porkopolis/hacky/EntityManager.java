@@ -7,7 +7,7 @@ import com.badlogic.gdx.utils.Array;
 import co.porkopolis.hacky.entities.Entity;
 
 public class EntityManager {
-	private static Array<Entity> entities = new Array<Entity>();
+	public static Array<Entity> entities = new Array<Entity>();
 	private static Array<Body> destroyBodyies = new Array<Body>();
 	
 	public static Entity getEntity(int index){

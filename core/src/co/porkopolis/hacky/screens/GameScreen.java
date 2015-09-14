@@ -1,11 +1,5 @@
 package co.porkopolis.hacky.screens;
 
-import co.porkopolis.hacky.EntityManager;
-import co.porkopolis.hacky.entities.Entity;
-import co.porkopolis.hacky.entities.Player;
-import co.porkopolis.hacky.untils.EntityBuilder;
-import co.porkopolis.hacky.untils.MapBodyBuilder;
-
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -13,8 +7,7 @@ import com.badlogic.gdx.Input.Peripheral;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -22,20 +15,26 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.Array;
+
+import co.porkopolis.hacky.Assets;
+import co.porkopolis.hacky.EntityManager;
+import co.porkopolis.hacky.entities.Bomb;
+import co.porkopolis.hacky.entities.Coin;
+import co.porkopolis.hacky.entities.Entity;
+import co.porkopolis.hacky.entities.Player;
+import co.porkopolis.hacky.untils.EntityBuilder;
+import co.porkopolis.hacky.untils.MapBodyBuilder;
 
 public class GameScreen implements Screen {
 
 	private OrthographicCamera camera;
 
-	private ShapeRenderer shapeRenderer = new ShapeRenderer();
 
 	private TiledMap tiledMap;
 	private TiledMapRenderer tiledMapRenderer;
@@ -46,14 +45,13 @@ public class GameScreen implements Screen {
 
 	private World world = new World(gravity, true);
 
-	Player player;
-
 	private short width = 23, height = 25;
 
-	private int tileSize;
 	private float mapWidth, mapHeight, angle = MathUtils.PI * 1.25f, dist = 27;
 
 	private boolean available;
+
+	private SpriteBatch batch;
 
 	@Override
 	public void show() {
@@ -65,6 +63,8 @@ public class GameScreen implements Screen {
 
 		createCollisionListener();
 
+		batch = new SpriteBatch(100);
+
 		renderer = new Box2DDebugRenderer();
 		renderer.setDrawBodies(true);
 
@@ -74,13 +74,10 @@ public class GameScreen implements Screen {
 
 		TiledMapTileLayer mainLayer = (TiledMapTileLayer) tiledMap.getLayers()
 				.get(0);
-		tileSize = (int) mainLayer.getTileWidth();
 		mapWidth = mainLayer.getWidth();
 		mapHeight = mainLayer.getHeight();
 
-		Array<Body> mapBodies = MapBodyBuilder.buildShapes(tiledMap, 32, world);
-		EntityBuilder.buildEntities(tiledMap, world, mapBodies);
-		mapBodies = null;
+		EntityBuilder.buildEntities(tiledMap, world, MapBodyBuilder.buildShapes(tiledMap, 32, world));
 	}
 
 	@Override
@@ -109,7 +106,6 @@ public class GameScreen implements Screen {
 					/ 2;
 
 		}
-
 		else if (Gdx.app.getType() == ApplicationType.Android) {
 			if (available) {
 				// Work-in-progress see:
@@ -124,23 +120,29 @@ public class GameScreen implements Screen {
 		}
 
 		world.setGravity(gravity);
-
-		// camera.rotate((((MathUtils.atan2(gravity.y - mapHeight / 2, gravity.x
-		// - mapWidth / 3)- MathUtils.atan2(camera.up.x, camera.up.y))) +
-		// MathUtils.PI * 0.45f) * MathUtils.radiansToDegrees);
-
+		
 		world.step(1 / 60f, 6, 2);
+		//render map
 		tiledMapRenderer.setView(camera);
 		tiledMapRenderer.render();
+		//render box2d debug
 		renderer.render(world, camera.combined);
+		//render sprites
+		batch.setProjectionMatrix(camera.combined);
+		batch.begin();
+		for(Entity e: EntityManager.entities){
+			if(e instanceof Coin){
+				batch.draw(Assets.coin.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
+			}
+			if(e instanceof Player){
+				batch.draw(Assets.player.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
+			}
+			if(e instanceof Bomb){
+				batch.draw(Assets.bomb.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
+			}
+		}
+		batch.end();
 		camera.update();
-
-		shapeRenderer.setProjectionMatrix(camera.combined);
-
-		shapeRenderer.begin(ShapeType.Filled);
-		shapeRenderer.setColor(0, 1, 0, 1);
-		shapeRenderer.circle(gravity.x, gravity.y, 0.5f);
-		shapeRenderer.end();
 
 	}
 
@@ -201,11 +203,9 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void dispose() {
-		shapeRenderer.dispose();
 		tiledMap.dispose();
 		renderer.dispose();
 		world.dispose();
-		player.destroy();
 	}
 
 }

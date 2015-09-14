@@ -11,10 +11,9 @@ import com.badlogic.gdx.utils.Array;
 import co.porkopolis.hacky.EntityManager;
 import co.porkopolis.hacky.entities.Bomb;
 import co.porkopolis.hacky.entities.Coin;
-import co.porkopolis.hacky.entities.Door;
-import co.porkopolis.hacky.entities.DoorStop;
 import co.porkopolis.hacky.entities.MapBody;
 import co.porkopolis.hacky.entities.Player;
+import co.porkopolis.hacky.entities.PlayerBlocker;
 
 public class EntityBuilder {
 
@@ -25,27 +24,18 @@ public class EntityBuilder {
 			if(o.getName() != null){
 				Float x = o.getProperties().get("x", Float.class);
 				Float y = o.getProperties().get("y", Float.class);
-				System.out.println(o.getName());
-				
 				if(o.getName().equals("playerStart")){
 					EntityManager.addEntity(new Player(new Vector2(x/32+0.5f, y/32+1.5f), world));
-					System.out.println("Player Created");
 				}
 				if(o.getName().equals("coin")){
 					EntityManager.addEntity(new Coin(new Vector2(x/32+0.5f, y/32+1.5f), world));
-					System.out.println("Player Created");
-				}
-				if(o.getName().equals("door")){
-					EntityManager.addEntity(new Door(new Vector2(x/32+0.5f, y/32+1.5f), world));
-					System.out.println("Player Created");
 				}
 				if(o.getName().equals("bomb")){
+					System.out.print("this happened");
 					EntityManager.addEntity(new Bomb(new Vector2(x/32+0.5f, y/32+1.5f), world));
-					System.out.println("Player Created");
 				}
-				if(o.getName().equals("doorStop")){
-					EntityManager.addEntity(new DoorStop(new Vector2(x/32+0.5f, y/32+1.5f), world));
-					System.out.println("Player Created");
+				if(o.getName().equals("playerBlocker")){
+					EntityManager.addEntity(new PlayerBlocker(new Vector2(x/32+0.5f, y/32+1.5f), world));
 				}
 				
 
