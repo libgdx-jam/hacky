@@ -45,7 +45,7 @@ public class GameScreen implements Screen {
 
 	private World world = new World(gravity, true);
 
-	private short width = 23, height = 25;
+	private short width = 46, height = 50;
 
 	private float mapWidth, mapHeight, angle = MathUtils.PI * 1.25f, dist = 27;
 
@@ -58,7 +58,7 @@ public class GameScreen implements Screen {
 		available = Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer);
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, width, height);
-		camera.translate(0,0);
+		camera.translate(-width/4,-height/4);
 		camera.update();
 
 		createCollisionListener();
@@ -84,7 +84,8 @@ public class GameScreen implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.gl.glClearColor(0f, 0f, 0f, 0f);
-		EntityManager.destroyBodies();
+		
+		EntityManager.update(delta);
 
 		if (Gdx.app.getType() == ApplicationType.Desktop) {
 
@@ -140,6 +141,7 @@ public class GameScreen implements Screen {
 			if(e instanceof Bomb){
 				batch.draw(Assets.bomb.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
 			}
+			batch.draw(Assets.bomb.reg, gravity.x, gravity.y, -1f, 0, 1, 1, 1, 1, 0);
 		}
 		batch.end();
 		camera.update();

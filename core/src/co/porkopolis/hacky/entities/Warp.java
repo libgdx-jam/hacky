@@ -63,8 +63,7 @@ public class Warp implements Entity {
 
 	@Override
 	public void touch(Entity e) {
-		e.getBody().setTransform(targetX, targetY, 0);
-
+		EntityManager.moveEntity(e, targetX, targetY);
 	}
 
 	@Override

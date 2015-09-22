@@ -32,7 +32,6 @@ public class EntityBuilder {
 					EntityManager.addEntity(new Coin(new Vector2(x/32+0.5f, y/32+1.5f), world));
 				}
 				if(o.getName().equals("bomb")){
-					System.out.print("this happened");
 					EntityManager.addEntity(new Bomb(new Vector2(x/32+0.5f, y/32+1.5f), world));
 				}
 				if(o.getName().equals("playerBlocker")){
@@ -41,9 +40,8 @@ public class EntityBuilder {
 				if(o.getName().equals("warp")){
 					Float targetX = Float.parseFloat(o.getProperties().get("targetX", String.class));
 					Float targetY = Float.parseFloat(o.getProperties().get("targetY", String.class));
-					System.out.println(targetX+" "+targetY);
 					EntityManager.addEntity(new Warp(new Vector2(x/32+0.5f, y/32+1.5f), world, targetX/32+1.5f, targetY/32+1.5f));
-					EntityManager.addEntity(new Warp(new Vector2(targetX/32+1.5f, targetY/32+1.5f), world, x/32+0.5f, y/32+1.5f));
+					EntityManager.addEntity(new Warp(new Vector2(targetX/32+1.5f, targetY/32-0.5f), world, x/32+0.5f, y/32+1.5f));
 				}
 
 				
