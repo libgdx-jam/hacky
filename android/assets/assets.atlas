@@ -6,7 +6,7 @@ filter: Nearest,Nearest
 repeat: none
 bomb01
   rotate: false
-  xy: 376, 4
+  xy: 410, 4
   size: 28, 30
   orig: 28, 30
   offset: 0, 0
@@ -84,6 +84,13 @@ player01
 player02
   rotate: false
   xy: 342, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: -1
+saw01
+  rotate: false
+  xy: 376, 2
   size: 32, 32
   orig: 32, 32
   offset: 0, 0

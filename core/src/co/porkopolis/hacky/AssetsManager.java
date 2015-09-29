@@ -7,9 +7,9 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Disposable;
 
-public class Assets implements Disposable {
+public class AssetsManager implements Disposable {
 
-	public static final String TAG = Assets.class.getSimpleName();
+	public static final String TAG = AssetsManager.class.getSimpleName();
 
 	public static boolean rebuildAtlas = true;
 	public static boolean drawDebugOutline = false;
@@ -21,7 +21,7 @@ public class Assets implements Disposable {
 	public static AssetPlayer player;
 	public static AssetCoin coin;
 	public static AssetBomb bomb;
-
+	public static AssetSaw saw;
 
 	private static TextureAtlas atlas;
 
@@ -48,6 +48,7 @@ public class Assets implements Disposable {
 		player = new AssetPlayer(atlas);
 		coin = new AssetCoin(atlas);
 		bomb = new AssetBomb(atlas);
+		saw = new AssetSaw(atlas);
 	}
 	
 	public static class AssetPlayer {
@@ -71,6 +72,13 @@ public class Assets implements Disposable {
 
 		public AssetBomb(TextureAtlas atlas) {
 			reg = atlas.findRegion("bomb01");
+		}
+	}
+	public static class AssetSaw {
+		public AtlasRegion reg;
+
+		public AssetSaw(TextureAtlas atlas) {
+			reg = atlas.findRegion("saw01");
 		}
 	}
 	@Override

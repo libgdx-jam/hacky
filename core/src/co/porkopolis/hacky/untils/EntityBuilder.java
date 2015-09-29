@@ -11,9 +11,11 @@ import com.badlogic.gdx.utils.Array;
 import co.porkopolis.hacky.EntityManager;
 import co.porkopolis.hacky.entities.Bomb;
 import co.porkopolis.hacky.entities.Coin;
+import co.porkopolis.hacky.entities.Door;
 import co.porkopolis.hacky.entities.MapBody;
 import co.porkopolis.hacky.entities.Player;
 import co.porkopolis.hacky.entities.PlayerBlocker;
+import co.porkopolis.hacky.entities.Saw;
 import co.porkopolis.hacky.entities.Warp;
 
 public class EntityBuilder {
@@ -23,35 +25,50 @@ public class EntityBuilder {
 		MapObjects objects = (MapObjects) map.getLayers().get("entityLayer").getObjects();
 		for(MapObject o: objects){
 			if(o.getName() != null){
-				Float x = o.getProperties().get("x", Float.class);
-				Float y = o.getProperties().get("y", Float.class);
+				Float x = o.getProperties().get("x", Float.class)/32+0.5f;
+				Float y = o.getProperties().get("y", Float.class)/32+1.5f;
 				if(o.getName().equals("playerStart")){
-					EntityManager.addEntity(new Player(new Vector2(x/32+0.5f, y/32+1.5f), world));
+					EntityManager.addEntity(new Player(new Vector2(x, y), world));
 				}
 				if(o.getName().equals("coin")){
-					EntityManager.addEntity(new Coin(new Vector2(x/32+0.5f, y/32+1.5f), world));
+					EntityManager.addEntity(new Coin(new Vector2(x, y), world));
 				}
 				if(o.getName().equals("bomb")){
-					EntityManager.addEntity(new Bomb(new Vector2(x/32+0.5f, y/32+1.5f), world));
+					EntityManager.addEntity(new Bomb(new Vector2(x, y), world));
 				}
 				if(o.getName().equals("playerBlocker")){
-					EntityManager.addEntity(new PlayerBlocker(new Vector2(x/32+0.5f, y/32+1.5f), world));
+					EntityManager.addEntity(new PlayerBlocker(new Vector2(x, y), world));
+				}
+				if(o.getName().equals("saw")){
+					EntityManager.addEntity(new Saw(new Vector2(x, y), world));
+				}
+				if(o.getName().equals("door")){
+					Float angle = Float.parseFloat(o.getProperties().get("angle", String.class))/32+0.5f;
+					EntityManager.addEntity(new Door(new Vector2(x, y), world, angle));
+					System.out.println("door");
 				}
 				if(o.getName().equals("warp")){
-					Float targetX = Float.parseFloat(o.getProperties().get("targetX", String.class));
-					Float targetY = Float.parseFloat(o.getProperties().get("targetY", String.class));
-					EntityManager.addEntity(new Warp(new Vector2(x/32+0.5f, y/32+1.5f), world, targetX/32+1.5f, targetY/32+1.5f));
-					EntityManager.addEntity(new Warp(new Vector2(targetX/32+1.5f, targetY/32-0.5f), world, x/32+0.5f, y/32+1.5f));
+					Float targetX = Float.parseFloat(o.getProperties().get("targetX", String.class))/32+0.5f;
+					Float targetY = Float.parseFloat(o.getProperties().get("targetY", String.class))/32+1.5f;
+					float shiftX = 0;
+					float shiftY = 0;
+					
+					if(x < targetX)
+						shiftX = -1;
+					else if(x > targetX)
+						shiftX = 1;
+					if(y < targetY)
+						shiftY = -1;
+					else if(y > targetY)
+						shiftY = 1;			
+					
+					EntityManager.addEntity(new Warp(new Vector2(x, y), world, targetX+shiftX, targetY+shiftY));
+					EntityManager.addEntity(new Warp(new Vector2(targetX, targetY), world, x-shiftX, y-shiftY));
 				}
 
 				
 			}
 		}
-
-
-
-		
-
 		for (Body b : mapBodies) {
 			EntityManager.addEntity(new MapBody(b));
 		}

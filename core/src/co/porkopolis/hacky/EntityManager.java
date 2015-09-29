@@ -35,7 +35,7 @@ public class EntityManager {
 		}
 	}
 	public static void moveEntity(Entity e, float targetX, float targetY){
-		moveEntities.add(new EntityMover(e, targetY, targetY));
+		moveEntities.add(new EntityMover(e, targetX, targetY));
 	}
 	private static void moveEntities() {
 		for(EntityMover e: moveEntities){

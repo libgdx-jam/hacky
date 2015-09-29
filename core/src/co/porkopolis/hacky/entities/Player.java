@@ -10,6 +10,8 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 
 import co.porkopolis.hacky.EntityManager;
+import co.porkopolis.hacky.GameManager;
+import co.porkopolis.hacky.screens.GameScreen;
 import co.porkopolis.hacky.untils.Box2dConstants;
 
 public class Player implements Entity {
@@ -61,6 +63,14 @@ public class Player implements Entity {
 	public void touch(Entity e) {
 		if (e instanceof Coin) {
 			EntityManager.removeEntity(e);
+		}
+		if (e instanceof Bomb) {
+			EntityManager.removeEntity(this);
+			GameManager.setScreen(new GameScreen());
+		}
+		if (e instanceof Saw) {
+			EntityManager.removeEntity(this);
+			GameManager.setScreen(new GameScreen());
 		}
 
 	}

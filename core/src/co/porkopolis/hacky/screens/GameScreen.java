@@ -22,12 +22,13 @@ import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
 
-import co.porkopolis.hacky.Assets;
+import co.porkopolis.hacky.AssetsManager;
 import co.porkopolis.hacky.EntityManager;
 import co.porkopolis.hacky.entities.Bomb;
 import co.porkopolis.hacky.entities.Coin;
 import co.porkopolis.hacky.entities.Entity;
 import co.porkopolis.hacky.entities.Player;
+import co.porkopolis.hacky.entities.Saw;
 import co.porkopolis.hacky.untils.EntityBuilder;
 import co.porkopolis.hacky.untils.MapBodyBuilder;
 
@@ -133,15 +134,18 @@ public class GameScreen implements Screen {
 		batch.begin();
 		for(Entity e: EntityManager.entities){
 			if(e instanceof Coin){
-				batch.draw(Assets.coin.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
+				batch.draw(AssetsManager.coin.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
 			}
 			if(e instanceof Player){
-				batch.draw(Assets.player.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
+				batch.draw(AssetsManager.player.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
 			}
 			if(e instanceof Bomb){
-				batch.draw(Assets.bomb.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
+				batch.draw(AssetsManager.bomb.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
 			}
-			batch.draw(Assets.bomb.reg, gravity.x, gravity.y, -1f, 0, 1, 1, 1, 1, 0);
+			if(e instanceof Saw){
+				batch.draw(AssetsManager.saw.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
+			}
+			batch.draw(AssetsManager.bomb.reg, gravity.x, gravity.y, -1f, 0, 1, 1, 1, 1, 0);
 		}
 		batch.end();
 		camera.update();
