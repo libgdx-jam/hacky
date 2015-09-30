@@ -37,8 +37,8 @@ public class Jam implements Entity {
 		fDef.friction = 0.0f;
 		fDef.restitution = 0.01f;
 		fDef.isSensor = true;
-		fDef.filter.categoryBits = Box2dConstants.COIN;
-		fDef.filter.maskBits = Box2dConstants.PLAYER;
+		fDef.filter.categoryBits = Box2dConstants.WORLD;
+		fDef.filter.maskBits = Box2dConstants.DEFUALT;
 
 		Fixture fixture = body.createFixture(fDef);
 		

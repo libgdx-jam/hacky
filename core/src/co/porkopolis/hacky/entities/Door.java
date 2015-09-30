@@ -16,18 +16,19 @@ public class Door implements Entity {
 	private Vector2 position;
 	private Body body;
 	private float baseSpeed = 1f;
-	private float speed = 1f;
+	private float speed = 1f, angle;
 	
 	private Jam jam;
 
-	public Door(Vector2 startPosition, World world, float angel) {
+	public Door(Vector2 startPosition, World world, float angel, float lowerTranslation, float upperTranslation) {
 		this.position = startPosition;
+		this.angle = angel;
 		
 		jam = new Jam(new Vector2(startPosition.x, startPosition.y), world);
 		
 		BodyDef def = new BodyDef();
 		def.position.set(startPosition);
-		def.type = BodyType.StaticBody;
+		def.type = BodyType.DynamicBody;
 		def.angularDamping = 1.0f;
 		def.linearDamping = 1.2f;
 		def.angle = angel;
@@ -37,16 +38,15 @@ public class Door implements Entity {
 		
 
 		PolygonShape rect = new PolygonShape();
-		rect.setAsBox(0.25f, 0.5f);
+		rect.setAsBox(0.5f, 0.25f);
 
 		FixtureDef fDef = new FixtureDef();
 		fDef.shape = rect;
 		fDef.density = 0.60f;
 		fDef.friction = 0.0f;
 		fDef.restitution = 0.01f;
-		fDef.isSensor = true;
 		fDef.filter.categoryBits = Box2dConstants.WORLD;
-		fDef.filter.maskBits = Box2dConstants.PLAYER;
+		fDef.filter.maskBits = Box2dConstants.DEFUALT | Box2dConstants.ENEMIES  | Box2dConstants.PLAYER;
 
 		Fixture fixture = body.createFixture(fDef);
 		fixture.setUserData(this);
@@ -54,6 +54,11 @@ public class Door implements Entity {
 		PrismaticJointDef jDef = new PrismaticJointDef();
 		jDef.bodyA = body;
 		jDef.bodyB = jam.getBody();
+		jDef.collideConnected = true;
+		jDef.referenceAngle = angle;
+		jDef.enableLimit = true;
+		jDef.lowerTranslation = lowerTranslation;
+		jDef.upperTranslation = upperTranslation;
 		world.createJoint(jDef);
 		
 	}

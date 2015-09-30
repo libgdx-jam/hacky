@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="23" height="25" tilewidth="32" tileheight="32" nextobjectid="1252">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="23" height="25" tilewidth="32" tileheight="32" nextobjectid="1253">
  <tileset firstgid="1" name="pac" tilewidth="32" tileheight="32">
   <image source="pac.png" width="128" height="256"/>
   <tile id="16">
@@ -229,7 +229,6 @@
   <object id="1032" name="coin" gid="18" x="224" y="416" width="32" height="32"/>
   <object id="1033" name="coin" gid="18" x="480" y="416" width="32" height="32"/>
   <object id="1034" name="coin" gid="18" x="544" y="416" width="32" height="32"/>
-  <object id="1035" name="coin" gid="18" x="512" y="416" width="32" height="32"/>
   <object id="1037" name="coin" gid="18" x="224" y="512" width="32" height="32"/>
   <object id="1038" name="coin" gid="18" x="288" y="512" width="32" height="32"/>
   <object id="1039" name="coin" gid="18" x="256" y="512" width="32" height="32"/>
@@ -331,7 +330,6 @@
   <object id="1139" name="coin" gid="18" x="672" y="256" width="32" height="32"/>
   <object id="1140" name="coin" gid="18" x="672" y="192" width="32" height="32"/>
   <object id="1141" name="coin" gid="18" x="160" y="480" width="32" height="32"/>
-  <object id="1142" name="coin" gid="18" x="160" y="512" width="32" height="32"/>
   <object id="1143" name="coin" gid="18" x="160" y="448" width="32" height="32"/>
   <object id="1144" name="coin" gid="18" x="544" y="480" width="32" height="32"/>
   <object id="1145" name="coin" gid="18" x="544" y="512" width="32" height="32"/>
@@ -404,18 +402,20 @@
     <property name="targetY" value="352"/>
    </properties>
   </object>
-  <object id="1242" name="saw" gid="20" x="128" y="352" width="32" height="32"/>
-  <object id="1245" name="saw" gid="20" x="576" y="352" width="32" height="32"/>
-  <object id="1246" name="saw" gid="20" x="128" y="480" width="32" height="32"/>
-  <object id="1247" name="saw" gid="20" x="576" y="480" width="32" height="32"/>
+  <object id="1246" name="saw" gid="20" x="192" y="416" width="32" height="32"/>
+  <object id="1247" name="saw" gid="20" x="608" y="224" width="32" height="32"/>
   <object id="1249" name="door" gid="22" x="160" y="512" width="32" height="32">
    <properties>
     <property name="angle" value="0"/>
+    <property name="lowerTranslation" value="0"/>
+    <property name="upperTranslation" value="1.2"/>
    </properties>
   </object>
-  <object id="1251" name="door" gid="22" x="512" y="416" width="32" height="32">
+  <object id="1252" name="door" gid="22" x="512" y="416" width="32" height="32">
    <properties>
-    <property name="angle" value="90"/>
+    <property name="angle" value="270"/>
+    <property name="lowerTranslation" value="0"/>
+    <property name="upperTranslation" value="1.2"/>
    </properties>
   </object>
  </objectgroup>

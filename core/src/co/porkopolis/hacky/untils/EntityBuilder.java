@@ -3,6 +3,7 @@ package co.porkopolis.hacky.untils;
 import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
@@ -43,9 +44,11 @@ public class EntityBuilder {
 					EntityManager.addEntity(new Saw(new Vector2(x, y), world));
 				}
 				if(o.getName().equals("door")){
-					Float angle = Float.parseFloat(o.getProperties().get("angle", String.class))/32+0.5f;
-					EntityManager.addEntity(new Door(new Vector2(x, y), world, angle));
-					System.out.println("door");
+					Float angle = Float.parseFloat(o.getProperties().get("angle", String.class))*MathUtils.degreesToRadians;
+					float lowerTranslation = Float.parseFloat(o.getProperties().get("lowerTranslation", String.class));
+					float upperTranslation = Float.parseFloat(o.getProperties().get("upperTranslation", String.class));
+					
+					EntityManager.addEntity(new Door(new Vector2(x, y), world, angle, lowerTranslation, upperTranslation));
 				}
 				if(o.getName().equals("warp")){
 					Float targetX = Float.parseFloat(o.getProperties().get("targetX", String.class))/32+0.5f;
