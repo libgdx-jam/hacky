@@ -21,9 +21,15 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import co.porkopolis.hacky.AssetsManager;
 import co.porkopolis.hacky.EntityManager;
+import co.porkopolis.hacky.GameManager;
 import co.porkopolis.hacky.entities.Bomb;
 import co.porkopolis.hacky.entities.Coin;
 import co.porkopolis.hacky.entities.Entity;
@@ -53,6 +59,8 @@ public class GameScreen implements Screen {
 	private boolean available;
 
 	private SpriteBatch batch;
+    private Skin skin;
+    private Stage stage;
 
 	@Override
 	public void show() {
@@ -79,6 +87,27 @@ public class GameScreen implements Screen {
 		mapHeight = mainLayer.getHeight();
 
 		EntityBuilder.buildEntities(tiledMap, world, MapBodyBuilder.buildShapes(tiledMap, 32, world));
+		
+		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
+        stage = new Stage();
+
+        final TextButton button = new TextButton("Retry", skin, "default");
+        
+        button.setWidth(200f);
+        button.setHeight(20f);
+        button.setPosition(Gdx.graphics.getWidth() /2 - 100f, Gdx.graphics.getHeight()/2 - 10f);
+        
+        button.addListener(new ClickListener(){
+            @Override 
+            public void clicked(InputEvent event, float x, float y){
+               dispose();
+               GameManager.setScreen(new GameScreen());
+            }
+        });
+        
+        stage.addActor(button);
+        
+        Gdx.input.setInputProcessor(stage);
 	}
 
 	@Override
@@ -131,7 +160,7 @@ public class GameScreen implements Screen {
 		renderer.render(world, camera.combined);
 		//render sprites
 		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
+		batch.begin();;
 		for(Entity e: EntityManager.entities){
 			if(e instanceof Coin){
 				batch.draw(AssetsManager.coin.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
@@ -147,6 +176,10 @@ public class GameScreen implements Screen {
 			}
 			batch.draw(AssetsManager.bomb.reg, gravity.x, gravity.y, -1f, 0, 1, 1, 1, 1, 0);
 		}
+		batch.end();
+		//Render HUD
+		batch.begin();
+		stage.draw();
 		batch.end();
 		camera.update();
 
@@ -209,9 +242,12 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void dispose() {
+		batch.dispose();
 		tiledMap.dispose();
 		renderer.dispose();
 		world.dispose();
+		stage.dispose();
+		EntityManager.dispose();
 	}
 
 }

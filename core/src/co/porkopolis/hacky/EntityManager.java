@@ -60,6 +60,11 @@ public class EntityManager {
 			}
 		}
 	}
+	public static void dispose(){
+		entities = new Array<Entity>();
+		destroyBodyies = new Array<Body>();
+		moveEntities = new Array<EntityMover>();
+	}
 
 	public static class EntityMover{
 		public Entity entity;
@@ -70,4 +75,5 @@ public class EntityManager {
 			this.targetY = targetY;
 		}
 	}
+
 }
