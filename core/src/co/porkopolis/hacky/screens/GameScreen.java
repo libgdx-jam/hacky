@@ -21,20 +21,19 @@ import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import co.porkopolis.hacky.AssetsManager;
 import co.porkopolis.hacky.EntityManager;
 import co.porkopolis.hacky.GameManager;
+import co.porkopolis.hacky.Menus;
 import co.porkopolis.hacky.entities.Bomb;
 import co.porkopolis.hacky.entities.Coin;
 import co.porkopolis.hacky.entities.Entity;
 import co.porkopolis.hacky.entities.Player;
 import co.porkopolis.hacky.entities.Saw;
+import co.porkopolis.hacky.untils.Emuns.GameState;
 import co.porkopolis.hacky.untils.EntityBuilder;
 import co.porkopolis.hacky.untils.MapBodyBuilder;
 
@@ -60,7 +59,9 @@ public class GameScreen implements Screen {
 
 	private SpriteBatch batch;
     private Skin skin;
-    private Stage stage;
+    private Stage pulsedStage;
+    private Stage gameOverStage;
+    private Stage optionsStage;
 
 	@Override
 	public void show() {
@@ -89,25 +90,26 @@ public class GameScreen implements Screen {
 		EntityBuilder.buildEntities(tiledMap, world, MapBodyBuilder.buildShapes(tiledMap, 32, world));
 		
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-        stage = new Stage();
+        pulsedStage = new Stage();
+        gameOverStage = new Stage();
+        optionsStage = new Stage();
+        
+        //create pulsedStage
+        Menus.createRestartButton(pulsedStage, skin);
+        Menus.createMainMenutButton(pulsedStage, skin);
+        Menus.createOptionsButton(pulsedStage, skin);
 
-        final TextButton button = new TextButton("Retry", skin, "default");
+        //create gameOverStage
+        Menus.createRestartButton(gameOverStage, skin);
+        Menus.createMainMenutButton(gameOverStage, skin);
         
-        button.setWidth(200f);
-        button.setHeight(20f);
-        button.setPosition(Gdx.graphics.getWidth() /2 - 100f, Gdx.graphics.getHeight()/2 - 10f);
+        //create optionsStage
+        Menus.createOption1Button(optionsStage, skin);
+        Menus.createBackButton(optionsStage, skin);
         
-        button.addListener(new ClickListener(){
-            @Override 
-            public void clicked(InputEvent event, float x, float y){
-               dispose();
-               GameManager.setScreen(new GameScreen());
-            }
-        });
-        
-        stage.addActor(button);
-        
-        Gdx.input.setInputProcessor(stage);
+        Gdx.input.setInputProcessor(pulsedStage);
+        Gdx.input.setInputProcessor(gameOverStage);
+        Gdx.input.setInputProcessor(optionsStage);
 	}
 
 	@Override
@@ -149,10 +151,12 @@ public class GameScreen implements Screen {
 				// accelerometer?
 			}
 		}
-
 		world.setGravity(gravity);
 		
-		world.step(1 / 60f, 6, 2);
+		if(GameManager.getGameState() != GameState.PULSED || GameManager.getGameState() != GameState.OPTIONS){
+			world.step(1 / 60f, 6, 2);
+		}
+		
 		//render map
 		tiledMapRenderer.setView(camera);
 		tiledMapRenderer.render();
@@ -178,10 +182,22 @@ public class GameScreen implements Screen {
 		}
 		batch.end();
 		//Render HUD
-		batch.begin();
-		stage.draw();
-		batch.end();
-		camera.update();
+		if(GameManager.getGameState() == GameState.PULSED){
+			batch.begin();
+			pulsedStage.draw();
+			batch.end();
+		}
+		else if(GameManager.getGameState() == GameState.GAMEOVER){
+			batch.begin();
+			gameOverStage.draw();
+			batch.end();
+		}
+		else if(GameManager.getGameState() == GameState.OPTIONS){
+			batch.begin();
+			optionsStage.draw();
+			batch.end();
+		}
+
 
 	}
 
@@ -246,7 +262,9 @@ public class GameScreen implements Screen {
 		tiledMap.dispose();
 		renderer.dispose();
 		world.dispose();
-		stage.dispose();
+		optionsStage.dispose();
+		pulsedStage.dispose();
+		gameOverStage.dispose();
 		EntityManager.dispose();
 	}
 
