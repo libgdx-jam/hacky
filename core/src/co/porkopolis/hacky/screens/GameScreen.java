@@ -1,8 +1,12 @@
 package co.porkopolis.hacky.screens;
 
 import com.badlogic.gdx.Application.ApplicationType;
+
+import java.awt.Menu;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Input.Peripheral;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -90,26 +94,9 @@ public class GameScreen implements Screen {
 		EntityBuilder.buildEntities(tiledMap, world, MapBodyBuilder.buildShapes(tiledMap, 32, world));
 		
 		skin = new Skin(Gdx.files.internal("data/uiskin.json"));
-        pulsedStage = new Stage();
-        gameOverStage = new Stage();
-        optionsStage = new Stage();
-        
-        //create pulsedStage
-        Menus.createRestartButton(pulsedStage, skin);
-        Menus.createMainMenutButton(pulsedStage, skin);
-        Menus.createOptionsButton(pulsedStage, skin);
-
-        //create gameOverStage
-        Menus.createRestartButton(gameOverStage, skin);
-        Menus.createMainMenutButton(gameOverStage, skin);
-        
-        //create optionsStage
-        Menus.createOption1Button(optionsStage, skin);
-        Menus.createBackButton(optionsStage, skin);
-        
-        Gdx.input.setInputProcessor(pulsedStage);
-        Gdx.input.setInputProcessor(gameOverStage);
-        Gdx.input.setInputProcessor(optionsStage);
+        pulsedStage = Menus.createPaluseMenu(skin);
+        gameOverStage = Menus.createGameOverMenu(skin);
+        optionsStage = Menus.createOptionsMenu(skin);
 	}
 
 	@Override
@@ -120,7 +107,9 @@ public class GameScreen implements Screen {
 		EntityManager.update(delta);
 
 		if (Gdx.app.getType() == ApplicationType.Desktop) {
-
+			if(Gdx.input.isKeyPressed(Keys.ESCAPE)){
+				GameManager.setGameState(GameState.PULSED);
+			}
 			if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
 				angle -= 0.01;
 				EntityManager.wakeAll();
@@ -153,7 +142,7 @@ public class GameScreen implements Screen {
 		}
 		world.setGravity(gravity);
 		
-		if(GameManager.getGameState() != GameState.PULSED || GameManager.getGameState() != GameState.OPTIONS){
+		if(GameManager.getGameState() != GameState.PULSED && GameManager.getGameState() != GameState.OPTIONS){
 			world.step(1 / 60f, 6, 2);
 		}
 		
@@ -183,16 +172,19 @@ public class GameScreen implements Screen {
 		batch.end();
 		//Render HUD
 		if(GameManager.getGameState() == GameState.PULSED){
+	        Gdx.input.setInputProcessor(pulsedStage);
 			batch.begin();
 			pulsedStage.draw();
 			batch.end();
 		}
 		else if(GameManager.getGameState() == GameState.GAMEOVER){
+	        Gdx.input.setInputProcessor(gameOverStage);
 			batch.begin();
 			gameOverStage.draw();
 			batch.end();
 		}
 		else if(GameManager.getGameState() == GameState.OPTIONS){
+	        Gdx.input.setInputProcessor(optionsStage);
 			batch.begin();
 			optionsStage.draw();
 			batch.end();

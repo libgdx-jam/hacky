@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
@@ -11,106 +12,166 @@ import co.porkopolis.hacky.screens.GameScreen;
 import co.porkopolis.hacky.untils.Emuns.GameState;
 
 public class Menus {
-	public static void createRestartButton(Stage stage, Skin skin){
+	public static Stage createPaluseMenu(Skin skin){
+		Stage stage = new Stage();
 		
+		Table mainTable = new Table();
+		mainTable.setFillParent(true);
+		stage.addActor(mainTable);
+		
+		Table buttonsTable = new Table();
+		
+		buttonsTable.add(createContinueButton(skin));
+		buttonsTable.row();
+		buttonsTable.add(createRestartButton(skin));
+		buttonsTable.row();
+		buttonsTable.add(createMainMenutButton(skin));
+		buttonsTable.row();
+		buttonsTable.add(createOptionsButton(skin));
+		buttonsTable.row();
+		mainTable.add(buttonsTable);
+		
+		return stage;
+	}
+	
+	public static Stage createGameOverMenu(Skin skin){
+		Stage stage = new Stage();
+		
+		Table mainTable = new Table();
+		mainTable.setFillParent(true);
+		stage.addActor(mainTable);
+		
+		Table buttonsTable = new Table();
+		
+		buttonsTable.add(createRestartButton(skin));
+		buttonsTable.row();
+		buttonsTable.add(createMainMenutButton(skin));
+		buttonsTable.row();
+		buttonsTable.add(createOptionsButton(skin));
+		buttonsTable.row();
+		mainTable.add(buttonsTable);
+		
+		return stage;
+	}
+	
+	public static Stage createOptionsMenu(Skin skin){
+		Stage stage = new Stage();
+		
+		Table mainTable = new Table();
+		mainTable.setFillParent(true);
+		stage.addActor(mainTable);
+		
+		Table buttonsTable = new Table();
+		
+		buttonsTable.add(createOption1Button(skin));
+		buttonsTable.row();
+		buttonsTable.add(createOption1Button(skin));
+		buttonsTable.row();
+		buttonsTable.add(createBackButton(skin));
+		buttonsTable.row();
+		mainTable.add(buttonsTable);
+		
+		return stage;
+	}
+
+	public static TextButton createRestartButton(Skin skin) {
+
 		TextButton button = new TextButton("Restate level", skin, "default");
-        
-        button.setWidth(200f);
-        button.setHeight(20f);
-        button.setPosition(Gdx.graphics.getWidth() /2 - 100f, Gdx.graphics.getHeight()/2 - 10f);
-        
-        button.addListener(new ClickListener(){
-            @Override 
-            public void clicked(InputEvent event, float x, float y){
-               GameManager.setScreen(new GameScreen());
-            }
-        });
-		stage.addActor(button);
-	}
-	
-	public static void createMainMenutButton(Stage stage, Skin skin){
+
+		button.setWidth(200f);
+		button.setHeight(20f);
 		
+		button.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				GameManager.setGameState(GameState.PLAY);
+				GameManager.setScreen(new GameScreen());
+			}
+		});
+
+		return button;
+	}
+
+	public static TextButton createMainMenutButton(Skin skin) {
+
 		TextButton button = new TextButton("Main menu", skin, "default");
-        
-        button.setWidth(200f);
-        button.setHeight(20f);
-        button.setPosition(Gdx.graphics.getWidth() /2 - 100f, Gdx.graphics.getHeight()/2 - 10f);
-        
-        button.addListener(new ClickListener(){
-            @Override 
-            public void clicked(InputEvent event, float x, float y){
-               //TODO: change to title screen
-            	GameManager.setScreen(new GameScreen());
-            }
-        });
-		stage.addActor(button);
+
+		button.setWidth(200f);
+		button.setHeight(20f);
+
+		button.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				// TODO: change to title screen
+				GameManager.setScreen(new GameScreen());
+				Gdx.app.log("Menus", "Main menu selection");
+			}
+		});
+
+		return button;
 	}
-	
-	public static void createOptionsButton(Stage stage, Skin skin){
-		
+
+	public static TextButton createOptionsButton(Skin skin) {
+
 		TextButton button = new TextButton("Options", skin, "default");
-        
-        button.setWidth(200f);
-        button.setHeight(20f);
-        button.setPosition(Gdx.graphics.getWidth() /2 - 100f, Gdx.graphics.getHeight()/2 - 10f);
-        
-        button.addListener(new ClickListener(){
-            @Override 
-            public void clicked(InputEvent event, float x, float y){
-            	GameManager.setGameState(GameState.OPTIONS);
-            }
-        });
-		stage.addActor(button);
+
+		button.setWidth(200f);
+		button.setHeight(20f);
+
+		button.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				GameManager.setGameState(GameState.OPTIONS);
+			}
+		});
+		return button;
 	}
-	public static void createContinueButton(Stage stage, Skin skin){
-		
+
+	public static TextButton createContinueButton(Skin skin) {
+
 		TextButton button = new TextButton("Continue", skin, "default");
-        
-        button.setWidth(200f);
-        button.setHeight(20f);
-        button.setPosition(Gdx.graphics.getWidth() /2 - 100f, Gdx.graphics.getHeight()/2 - 10f);
-        
-        button.addListener(new ClickListener(){
-            @Override 
-            public void clicked(InputEvent event, float x, float y){
-               GameManager.setGameState(GameState.PLAY);
-            }
-        });
-		stage.addActor(button);
-	}
-	
-	public static void createOption1Button(Stage stage, Skin skin){
+
+		button.setWidth(200f);
+		button.setHeight(20f);
 		
+		button.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				GameManager.setGameState(GameState.PLAY);
+			}
+		});
+		return button;
+	}
+
+	public static TextButton createOption1Button(Skin skin) {
+
 		TextButton button = new TextButton("This Does nothing yet", skin, "default");
-        
-        button.setWidth(200f);
-        button.setHeight(20f);
-        button.setPosition(Gdx.graphics.getWidth() /2 - 100f, Gdx.graphics.getHeight()/2 - 10f);
-        
-        button.addListener(new ClickListener(){
-            @Override 
-            public void clicked(InputEvent event, float x, float y){
-            }
-        });
-		stage.addActor(button);
+
+		button.setWidth(200f);
+		button.setHeight(20f);
+
+		button.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+			}
+		});
+		return button;
 	}
-	
-	public static void createBackButton(Stage stage, Skin skin){
-		
+
+	public static TextButton createBackButton(Skin skin) {
+
 		TextButton button = new TextButton("Back", skin, "default");
-        
-        button.setWidth(200f);
-        button.setHeight(20f);
-        button.setPosition(Gdx.graphics.getWidth() /2 - 100f, Gdx.graphics.getHeight()/2 - 10f);
-        
-        button.addListener(new ClickListener(){
-            @Override 
-            public void clicked(InputEvent event, float x, float y){
-               GameManager.setGameState(GameState.PLAY);
-            }
-        });
-		stage.addActor(button);
+
+		button.setWidth(200f);
+		button.setHeight(20f);
+
+		button.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				GameManager.setGameState(GameState.PLAY);
+			}
+		});
+		return button;
 	}
-    	
 
 }

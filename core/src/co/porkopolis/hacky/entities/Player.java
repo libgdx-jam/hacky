@@ -13,6 +13,7 @@ import co.porkopolis.hacky.EntityManager;
 import co.porkopolis.hacky.GameManager;
 import co.porkopolis.hacky.screens.GameScreen;
 import co.porkopolis.hacky.untils.Box2dConstants;
+import co.porkopolis.hacky.untils.Emuns.GameState;
 
 public class Player implements Entity {
 	private Vector2 position;
@@ -70,7 +71,7 @@ public class Player implements Entity {
 		}
 		if (e instanceof Saw) {
 			EntityManager.removeEntity(this);
-			GameManager.setScreen(new GameScreen());
+			GameManager.setGameState(GameState.GAMEOVER);
 		}
 
 	}

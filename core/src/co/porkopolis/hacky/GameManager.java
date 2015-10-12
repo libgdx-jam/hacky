@@ -1,6 +1,7 @@
 package co.porkopolis.hacky;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 
 import co.porkopolis.hacky.untils.Emuns.GameState;
@@ -15,6 +16,7 @@ public class GameManager {
 	
 	public static void setGameState(GameState gameState){
 		GameManager.gameState = gameState;
+		Gdx.app.log("GameManager", "gameState is now: "+gameState.toString());
 	}
 
 	public static void init(Game game) {
@@ -22,10 +24,13 @@ public class GameManager {
 	}
 
 	public static void setScreen(Screen screen) {
+		Gdx.app.log("GameManager", "Loading new screen");
 		if(game.getScreen() != null){
+			Gdx.app.log("GameManager", "Disposing previous screen");
 			game.getScreen().dispose();
 		}
 		game.setScreen(screen);
+		Gdx.app.log("GameManager", "Screen loaded");
 	}
 
 }
