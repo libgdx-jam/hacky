@@ -73,6 +73,27 @@ public class Menus {
 		
 		return stage;
 	}
+	
+	public static Stage createMainMenu(Skin skin){
+		Stage stage = new Stage();
+		
+		Table mainTable = new Table();
+		mainTable.setFillParent(true);
+		stage.addActor(mainTable);
+		
+		Table buttonsTable = new Table();
+		buttonsTable.add(createContinueButton(skin));
+		buttonsTable.row();
+		buttonsTable.add(createRestartButton(skin));
+		buttonsTable.row();
+		buttonsTable.add(createMainMenutButton(skin));
+		buttonsTable.row();
+		buttonsTable.add(createOptionsButton(skin));
+		buttonsTable.row();
+		mainTable.add(buttonsTable);
+		
+		return stage;
+	}
 
 	public static TextButton createRestartButton(Skin skin) {
 

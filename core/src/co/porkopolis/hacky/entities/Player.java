@@ -67,7 +67,7 @@ public class Player implements Entity {
 		}
 		if (e instanceof Bomb) {
 			EntityManager.removeEntity(this);
-			GameManager.setScreen(new GameScreen());
+			GameManager.setGameState(GameState.GAMEOVER);
 		}
 		if (e instanceof Saw) {
 			EntityManager.removeEntity(this);

@@ -55,11 +55,13 @@ public class GameScreen implements Screen {
 
 	private World world = new World(gravity, true);
 
-	private short width = 46, height = 50;
+	private short width = 25, height = 25;
 
 	private float mapWidth, mapHeight, angle = MathUtils.PI * 1.25f, dist = 27;
 
 	private boolean available;
+	
+	private String map;
 
 	private SpriteBatch batch;
     private Skin skin;
@@ -67,13 +69,10 @@ public class GameScreen implements Screen {
     private Stage gameOverStage;
     private Stage optionsStage;
 
+
 	@Override
 	public void show() {
 		available = Gdx.input.isPeripheralAvailable(Peripheral.Accelerometer);
-		camera = new OrthographicCamera();
-		camera.setToOrtho(false, width, height);
-		camera.translate(-width/4,-height/4);
-		camera.update();
 
 		createCollisionListener();
 
@@ -81,8 +80,8 @@ public class GameScreen implements Screen {
 
 		renderer = new Box2DDebugRenderer();
 		renderer.setDrawBodies(true);
-
-		tiledMap = new TmxMapLoader().load("maps/pacman4.tmx");
+		
+		tiledMap = new TmxMapLoader().load("maps/level001.tmx");
 
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, 0.03125f);
 
@@ -97,6 +96,11 @@ public class GameScreen implements Screen {
         pulsedStage = Menus.createPaluseMenu(skin);
         gameOverStage = Menus.createGameOverMenu(skin);
         optionsStage = Menus.createOptionsMenu(skin);
+        
+		camera = new OrthographicCamera();
+		camera.setToOrtho(false, width, height);
+		camera.translate(-width/4,-height/4);
+		camera.update();
 	}
 
 	@Override
@@ -168,6 +172,7 @@ public class GameScreen implements Screen {
 				batch.draw(AssetsManager.saw.reg, e.getBody().getPosition().x-0.5f, e.getBody().getPosition().y-0.5f, -1f, 0, 1, 1, 1, 1, 0);
 			}
 			batch.draw(AssetsManager.bomb.reg, gravity.x, gravity.y, -1f, 0, 1, 1, 1, 1, 0);
+			batch.draw(AssetsManager.bomb.reg, 0, 6, -1f, 0, 1, 1, 1, 1, 0);
 		}
 		batch.end();
 		//Render HUD
