@@ -10,6 +10,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
 import co.porkopolis.hacky.EntityManager;
+import co.porkopolis.hacky.GameManager;
 import co.porkopolis.hacky.entities.Bomb;
 import co.porkopolis.hacky.entities.Coin;
 import co.porkopolis.hacky.entities.Door;
@@ -33,6 +34,7 @@ public class EntityBuilder {
 				}
 				if(o.getName().equals("coin")){
 					EntityManager.addEntity(new Coin(new Vector2(x, y), world));
+					GameManager.coins = GameManager.coins + 1;
 				}
 				if(o.getName().equals("bomb")){
 					EntityManager.addEntity(new Bomb(new Vector2(x, y), world));

@@ -60,8 +60,6 @@ public class GameScreen implements Screen {
 	private float mapWidth, mapHeight, angle = MathUtils.PI * 1.25f, dist = 27;
 
 	private boolean available;
-	
-	private String map;
 
 	private SpriteBatch batch;
     private Skin skin;
@@ -81,7 +79,7 @@ public class GameScreen implements Screen {
 		renderer = new Box2DDebugRenderer();
 		renderer.setDrawBodies(true);
 		
-		tiledMap = new TmxMapLoader().load("maps/level001.tmx");
+		tiledMap = new TmxMapLoader().load("maps/"+GameManager.getMap()+".tmx");
 
 		tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap, 0.03125f);
 
@@ -98,8 +96,8 @@ public class GameScreen implements Screen {
         optionsStage = Menus.createOptionsMenu(skin);
         
 		camera = new OrthographicCamera();
-		camera.setToOrtho(false, width, height);
-		camera.translate(-width/4,-height/4);
+		camera.setToOrtho(false, mapWidth-2, 32);
+		camera.translate(1,0);
 		camera.update();
 	}
 
@@ -107,6 +105,10 @@ public class GameScreen implements Screen {
 	public void render(float delta) {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		Gdx.gl.glClearColor(0f, 0f, 0f, 0f);
+		
+		if(GameManager.coins == 0){
+			GameManager.setGameState(GameState.GAMEOVER);
+		}
 		
 		EntityManager.update(delta);
 

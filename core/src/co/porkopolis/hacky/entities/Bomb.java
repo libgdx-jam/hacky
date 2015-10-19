@@ -35,7 +35,7 @@ public class Bomb implements Entity {
 		fDef.shape = cir;
 		fDef.density = 0.60f;
 		fDef.friction = 0.0f;
-		fDef.restitution = 0.01f;
+		fDef.restitution = 0.2f;
 		fDef.filter.categoryBits = Box2dConstants.ENEMIES;
 		fDef.filter.maskBits = Box2dConstants.DEFUALT | Box2dConstants.ENEMIES | Box2dConstants.PLAYER
 				| Box2dConstants.WORLD;

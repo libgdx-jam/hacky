@@ -6,9 +6,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 import co.porkopolis.hacky.screens.GameScreen;
+import co.porkopolis.hacky.screens.TitleScreen;
 import co.porkopolis.hacky.untils.Emuns.GameState;
 
 public class Menus {
@@ -79,18 +81,27 @@ public class Menus {
 		
 		Table mainTable = new Table();
 		mainTable.setFillParent(true);
-		stage.addActor(mainTable);
 		
-		Table buttonsTable = new Table();
-		buttonsTable.add(createContinueButton(skin));
-		buttonsTable.row();
-		buttonsTable.add(createRestartButton(skin));
-		buttonsTable.row();
-		buttonsTable.add(createMainMenutButton(skin));
-		buttonsTable.row();
-		buttonsTable.add(createOptionsButton(skin));
-		buttonsTable.row();
-		mainTable.add(buttonsTable);
+		final TextField mapName = new TextField("level001", skin);
+		mapName.setWidth(400);
+		mapName.setHeight(200);
+		
+		TextButton button = new TextButton("Load map", skin, "default");
+		button.setWidth(200f);
+		button.setHeight(20f);
+		button.addListener(new ClickListener() {
+			@Override
+			public void clicked(InputEvent event, float x, float y) {
+				GameManager.setGameState(GameState.PLAY);
+				GameManager.setMap(mapName.getText());
+				GameManager.setScreen(new GameScreen());
+			}
+		});
+		
+		mainTable.add(mapName);
+		mainTable.add(button);
+		
+		stage.addActor(mainTable);
 		
 		return stage;
 	}
@@ -124,7 +135,7 @@ public class Menus {
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				// TODO: change to title screen
-				GameManager.setScreen(new GameScreen());
+				GameManager.setScreen(new TitleScreen());
 				Gdx.app.log("Menus", "Main menu selection");
 			}
 		});

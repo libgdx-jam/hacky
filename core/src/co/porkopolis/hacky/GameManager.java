@@ -9,6 +9,8 @@ import co.porkopolis.hacky.untils.Emuns.GameState;
 public class GameManager {
 	private static Game game;
 	private static GameState gameState = GameState.PLAY;
+	private static String map;
+	public static int coins;
 	
 	public static GameState getGameState(){
 		return gameState;
@@ -31,6 +33,13 @@ public class GameManager {
 		}
 		game.setScreen(screen);
 		Gdx.app.log("GameManager", "Screen loaded");
+	}
+	
+	public static void setMap(String map){
+		GameManager.map = map;
+	}
+	public static String getMap(){
+		return map;
 	}
 
 }

@@ -2,7 +2,7 @@ package co.porkopolis.hacky;
 
 import com.badlogic.gdx.Game;
 
-import co.porkopolis.hacky.screens.GameScreen;
+import co.porkopolis.hacky.screens.TitleScreen;
 
 public class Main extends Game {
 
@@ -11,6 +11,6 @@ public class Main extends Game {
 		AssetsManager.load();
 		AssetsManager.create();
 		GameManager.init(this);
-		GameManager.setScreen(new GameScreen());
+		GameManager.setScreen(new TitleScreen());
 	}
 }

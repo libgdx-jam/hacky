@@ -36,7 +36,7 @@ public class Player implements Entity {
 
 		FixtureDef fDef = new FixtureDef();
 		fDef.shape = cir;
-		fDef.density = 0.60f;
+		fDef.density = 0.40f;
 		fDef.friction = 0.0f;
 		fDef.restitution = 0.01f;
 		fDef.filter.categoryBits = Box2dConstants.PLAYER;
@@ -64,6 +64,7 @@ public class Player implements Entity {
 	public void touch(Entity e) {
 		if (e instanceof Coin) {
 			EntityManager.removeEntity(e);
+			GameManager.coins --;
 		}
 		if (e instanceof Bomb) {
 			EntityManager.removeEntity(this);
